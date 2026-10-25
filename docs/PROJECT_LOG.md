@@ -50,7 +50,7 @@ Stage 1 approved 2026-10-25.
 
 ## Open questions
 
-- Visual references: two Canva templates (EAFSuph-1oU, EAG16xRZiVM). They can't be opened from this environment; waiting for screenshots or a shared design link
+- Visual references received via Canva share links: scrapbook wedding site, "Nest Wallpapers" (bold pink/blue), birthday site (cream + plum). v2 concept built from them: `design/visual-concept-v2.html`. Waiting for Tal to choose v1, v2 or a mix
 
 See the Stage 1 questions in the chat. Answers get recorded here.
 
