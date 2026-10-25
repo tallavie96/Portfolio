@@ -64,6 +64,38 @@
 .slide[data-active="true"] .slideImage {
   transform: scale(1);
 }
+/* Full-bleed photo slide, with a soft fade at the bottom so the caption stays readable */
+.slidePhoto {
+  object-fit: cover;
+  object-position: 62% 40%;
+  transform: scale(1.04);
+  transition: transform 6s linear;
+}
+.slide[data-active="true"] .slidePhoto {
+  transform: scale(1);
+}
+.slide:has(.slidePhoto)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom, rgb(20 20 18 / 0.28), transparent 38%),
+    linear-gradient(to top, rgb(20 20 18 / 0.45), transparent 32%);
+  pointer-events: none;
+}
+/* White type while a photo slide is showing */
+.wordmark {
+  transition: color 900ms ease;
+}
+.frame[data-photo="true"] .wordmark,
+.frame[data-photo="true"] .captionItem,
+.frame[data-photo="true"] .pauseBtn {
+  color: #fff;
+}
+.frame[data-photo="true"] .pauseBtn {
+  border-color: rgb(255 255 255 / 0.5);
+}
+
 /* Three phones centred on the light tint, between the name and the caption */
 .slidePhones,
 .slideDesktop {
