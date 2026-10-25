@@ -65,6 +65,12 @@ export function HomeHero({
                   sizes="100vw"
                   priority={i === 0}
                   className={styles.slidePhoto}
+                  style={
+                    {
+                      "--pos": p.heroPhoto.position ?? "50% 50%",
+                      "--pos-m": p.heroPhoto.mobilePosition ?? p.heroPhoto.position ?? "50% 50%",
+                    } as CSSProperties
+                  }
                 />
               ) : p.phones.length > 0 ? (
                 <div className={styles.slidePhones}>

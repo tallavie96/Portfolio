@@ -67,7 +67,7 @@
 /* Full-bleed photo slide, with a soft fade at the bottom so the caption stays readable */
 .slidePhoto {
   object-fit: cover;
-  object-position: 72% 70%;
+  object-position: var(--pos, 50% 50%);
   transform: scale(1.04);
   transition: transform 6s linear;
 }
@@ -637,7 +637,7 @@
     font-size: 14vw;
   }
   .slidePhoto {
-    object-position: 84% 60%;
+    object-position: var(--pos-m, 50% 50%);
   }
   .slidePhones,
   .slideDesktop {

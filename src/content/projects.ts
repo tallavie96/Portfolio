@@ -13,6 +13,7 @@ import hertzDashboard from "@/assets/images/hertz-dashboard.webp";
 import hertzOrders from "@/assets/images/hertz-orders.webp";
 import hertzStats from "@/assets/images/hertz-stats.webp";
 import hertzLandscape from "@/assets/images/hertz-landscape.webp";
+import boostBooth from "@/assets/images/boost-booth.webp";
 import boostWall1 from "@/assets/images/boost-wall-1.webp";
 import boostWall2 from "@/assets/images/boost-wall-2.webp";
 import keaProducts from "@/assets/images/kea-products.webp";
@@ -33,7 +34,7 @@ interface ProjectBase {
   /** Desktop screen shown in a browser frame (portals, dashboards). */
   desktop: { src: StaticImageData; alt: string } | null;
   /** Full-bleed photo for the homepage slide, used instead of screens when set. */
-  heroPhoto?: { src: StaticImageData; alt: string };
+  heroPhoto?: { src: StaticImageData; alt: string; position?: string; mobilePosition?: string };
 }
 
 interface ProjectText {
@@ -83,6 +84,8 @@ const base: ProjectBase[] = [
     heroPhoto: {
       src: hertzLandscape,
       alt: "A car driving along a curving mountain viaduct through autumn forest",
+      position: "72% 70%",
+      mobilePosition: "84% 60%",
     },
     desktop: {
       src: hertzDashboard,
@@ -95,6 +98,12 @@ const base: ProjectBase[] = [
     type: "collection",
     cover: keaCover,
     desktop: null,
+    heroPhoto: {
+      src: boostBooth,
+      alt: "Boost × monday.com trade-show booth with wall graphics: 'What if your next hire was an AI colleague?'",
+      position: "50% 45%",
+      mobilePosition: "30% 50%",
+    },
     gallery: [
       { src: keaOnboarding, alt: "kea onboarding screen: search or photograph your products to build a routine" },
       { src: keaProducts, alt: "kea product list grouped by step, with ingredients and a retinol warning" },

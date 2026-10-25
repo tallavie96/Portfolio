@@ -20,7 +20,7 @@ export interface HomeProject {
   gallery: HomeImage[];
   phones: HomeImage[];
   desktop: HomeImage | null;
-  heroPhoto: HomeImage | null;
+  heroPhoto: (HomeImage & { position?: string; mobilePosition?: string }) | null;
 }
 
 export function getHomeProjects(lang: Locale): HomeProject[] {
