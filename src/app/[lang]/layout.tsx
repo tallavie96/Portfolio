@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { direction, enabledLocales, isEnabledLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
-import { bodyFont, displayFont, typeFont } from "@/styles/fonts";
+import { bodyFont, bodyHebrewFont, headingFont } from "@/styles/fonts";
 import "@/styles/globals.css";
 import styles from "./layout.module.css";
 
@@ -29,7 +29,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
     <html
       lang={lang}
       dir={direction[lang]}
-      className={`${displayFont.variable} ${bodyFont.variable} ${typeFont.variable}`}
+      className={`${headingFont.variable} ${bodyFont.variable} ${bodyHebrewFont.variable}`}
     >
       <body>
         <a className={styles.skip} href="#main">

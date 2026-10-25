@@ -1,144 +1,108 @@
-.work {
-  background: var(--blush);
-}
-
-.head {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: end;
-  gap: var(--s-4);
-  margin-bottom: var(--s-7);
-}
-.head h2 {
-  font-family: var(--f-display);
-  font-weight: 750;
-  font-size: var(--t-h2);
-  line-height: 0.95;
-  letter-spacing: -0.03em;
-  color: var(--plum);
-  font-variation-settings: "wdth" 85;
-}
-
 .grid {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--s-6) var(--col-gap);
-}
-
-.cell {
-  display: grid;
-  grid-template-rows: auto 1fr;
-  gap: 14px;
-}
-
-.frameLabel {
-  display: flex;
-  justify-content: space-between;
-  gap: var(--s-3);
-  padding-inline: 4px;
+  gap: var(--s-8) var(--col-gap);
 }
 
 .card {
   position: relative;
   display: grid;
-  grid-template-rows: auto 1fr auto;
-  gap: var(--s-3);
-  padding: 12px 12px 20px;
-  border-radius: var(--r-card);
-  background: var(--card);
-  text-decoration: none;
-  transition:
-    transform var(--t-ui) var(--ease),
-    box-shadow var(--t-ui) var(--ease);
-}
-.card:focus-visible {
-  outline: none;
-}
-.card:focus-visible .selection {
-  opacity: 1;
+  gap: var(--s-4);
+  align-content: start;
 }
 
 .art {
   aspect-ratio: 4 / 3;
-  border-radius: var(--r-img);
   overflow: hidden;
-  background: var(--paper);
+  border-radius: var(--radius);
+  background: var(--project);
 }
 .art img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: opacity var(--t-fast) var(--ease);
 }
 
 .meta {
   display: grid;
-  gap: 4px;
-  align-content: start;
-  padding-inline: 8px;
+  gap: var(--s-2);
+  justify-items: start;
 }
-.titleRow {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: var(--s-3);
-}
-.titleRow h3 {
-  font-family: var(--f-display);
-  font-weight: 700;
-  font-size: 1.75rem;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
-  color: var(--plum);
-}
-.number {
+.kind {
   color: var(--ink-2);
+  font-size: var(--t-label);
+}
+.meta h3 {
+  font-size: var(--t-h3);
 }
 .meta p {
-  font-size: var(--t-small);
   color: var(--ink-2);
+  font-size: var(--t-small);
+  line-height: 1.6;
+}
+
+/* Stretched link: the card is one target, the title stays the accessible name */
+.link {
+  text-decoration: none;
+}
+.link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.link:focus-visible {
+  outline: none;
+}
+.link:focus-visible::after {
+  outline: 2px solid var(--ink);
+  outline-offset: 6px;
+  border-radius: var(--radius);
+}
+.card:hover .link {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+.card:hover .art img {
+  opacity: 0.92;
 }
 
 .tags {
   list-style: none;
   margin: 0;
-  padding: 0 8px;
+  padding: 0;
   display: flex;
   flex-wrap: wrap;
+  gap: var(--s-1) var(--s-3);
+  font-size: var(--t-label);
+  font-weight: 500;
+}
+/* a small dot in the project's accent color before each tag */
+.tags li {
+  display: inline-flex;
+  align-items: center;
   gap: 6px;
 }
-.tags li {
-  padding: 3px 10px;
-  border: 1px solid var(--plum);
-  border-radius: 999px;
-  color: var(--plum);
-  font-size: 0.75rem;
-  font-weight: 600;
+.tags li::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--project);
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .card:hover {
-    transform: translateY(-6px);
-    box-shadow: var(--shadow-lift);
-  }
-  .card:hover .selection {
-    opacity: 1;
+@media (max-width: 960px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
-
-@media (max-width: 760px) {
+@media (max-width: 640px) {
   .grid {
     grid-template-columns: 1fr;
     gap: var(--s-7);
-  }
-}
-
-/* Three narrow columns: keep the frame label to one line */
-@media (min-width: 761px) and (max-width: 1100px) {
-  .frameLabel span:last-child {
-    display: none;
   }
 }

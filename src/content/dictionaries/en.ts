@@ -22,10 +22,9 @@ export const en = {
     facts: approved("Shenkar, Visual Communication, 2023"),
     ctaWork: "See selected work",
     ctaContact: "Get in touch",
-    boardLabel: "Project previews",
-    sticky: "MuniBox, Hertz and more: screens coming soon.",
-    stamp: ["AI", "play", "ground"],
-    portraitCaption: "hi, it's me",
+    featuredCaption: "kea, from the AI playground",
+    featuredAlt:
+      "Three screens from kea, a skincare routine app: onboarding, product list, and morning and evening routine",
     portraitAlt: "Tal Lavie sitting on the grass in a park, smiling and looking to the side",
   },
   work: {

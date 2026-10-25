@@ -8,6 +8,7 @@ import { About } from "@/components/home/About";
 import { Contact } from "@/components/home/Contact";
 import { Toolbar } from "@/components/site/Toolbar";
 import { SiteFooter } from "@/components/site/SiteFooter";
+import { RevealObserver } from "@/components/site/RevealObserver";
 
 export default async function HomePage({ params }: PageProps<"/[lang]">) {
   const { lang } = await params;
@@ -23,6 +24,7 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
         <Contact dict={dict} />
       </main>
       <SiteFooter dict={dict} />
+      <RevealObserver />
       <Toolbar
         onHome
         homeHref={`/${lang}`}

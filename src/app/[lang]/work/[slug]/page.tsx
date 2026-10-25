@@ -8,6 +8,7 @@ import { Placeholder } from "@/components/ui/Placeholder";
 import { DraftTag } from "@/components/ui/DraftTag";
 import { Toolbar } from "@/components/site/Toolbar";
 import { SiteFooter } from "@/components/site/SiteFooter";
+import { RevealObserver } from "@/components/site/RevealObserver";
 import styles from "./page.module.css";
 
 export function generateStaticParams() {
@@ -35,7 +36,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/[lang]/work/
         <section className={styles.opener} id="top" aria-labelledby="cs-title">
           <div className={`inner ${styles.split}`}>
             <div className={styles.copy}>
-              <span className="label">
+              <span className={styles.eyebrow}>
                 {dict.caseStudy.eyebrow} · {project.number}
               </span>
               <h1 id="cs-title">{project.title}</h1>
@@ -54,6 +55,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/[lang]/work/
         </section>
       </main>
       <SiteFooter dict={dict} />
+      <RevealObserver />
       <Toolbar
         onHome={false}
         homeHref={`/${lang}`}

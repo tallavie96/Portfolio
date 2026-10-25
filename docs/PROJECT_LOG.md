@@ -56,6 +56,18 @@ Stage 1 approved 2026-10-25.
 - Each AI-project entry records what the AI did and what Tal did
 - No analytics, no forms, and no CMS for now
 
+## Stage 3 refinement: calmer direction (Tal's feedback, 2026-10-25)
+
+Supersedes the v3 "playground board" styling. Information architecture, content and routes unchanged.
+
+- Removed: tape, sticky note, stamp, polaroid hero portrait, collaborator cursor, redline, torn edge, selection handles, tilted cards and hover lift, typewriter labels, full-width color sections, plum and violet accents, Bricolage Grotesque and Courier Prime
+- Kept: dotted background (now the single canvas for the whole site), marker-style tags (role label in the hero, "Draft copy" markers), floating bottom navigation (simplified)
+- Palette: canvas #F7F3EC, surface #FFFDF9, ink #26201F, ink-2 #5F5754, line #E3DBCF; accents only blush #F5C6D3, sky #C4DEF3, butter #F3E19A, used for markers, tag dots, image backgrounds and one highlight under the contact heading
+- Type: Frank Ruhl Libre (headings, Latin + Hebrew) and IBM Plex Sans + IBM Plex Sans Hebrew (body). Scale: h1 44–76px, h2 30–42px, h3 24px, lead 18–21px, body 17px
+- Hero: role marker, name, one line, facts, two buttons, one featured image (kea). Cards: image, number + type, title, summary, tags with accent dots; hover = title underline
+- Motion: scroll reveals (fade + 18px rise, 700ms, staggered 90ms) via `RevealObserver`; nothing hidden without JS; none with reduced motion. No cursor effects
+- Case-study placeholder page: same split layout, glow removed
+
 ## Stage 3 notes (2026-10-25)
 
 - Next.js 16.4.3 with Cache Components and partial prefetching (scaffold defaults). Routes: `/` → `/en` (temporary redirect), `/en`, `/en/work/[slug]` (temporary "being written" pages so cards don't 404)

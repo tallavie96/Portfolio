@@ -5,10 +5,10 @@ export function SiteFooter({ dict }: { dict: Dictionary }) {
   return (
     <footer className={styles.footer}>
       <div className={`inner ${styles.row}`}>
-        <span className="label">
+        <span>
           {dict.hero.firstName} {dict.hero.lastName} · {dict.hero.role}
         </span>
-        <a className="label" href="#top">
+        <a href="#top">
           {dict.common.backToTop}
         </a>
       </div>

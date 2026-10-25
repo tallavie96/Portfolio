@@ -1,33 +1,27 @@
-/* Design tokens: "the playground board" (Stage 2, v3). Light theme only. */
+/* Design tokens. Calm editorial base, three soft accents used sparingly. Light theme only. */
 :root {
-  /* Color. Pastels are surfaces; text on them is ink or plum, never ink-2. */
-  --paper: #f6f0e6;
-  --card: #fffdf9;
-  --ink: #2b1d22;
-  --ink-2: #6a5a60; /* paper and card only */
-  --plum: #5e1a36;
-  --plum-deep: #4a1229;
-  --blush: #f5b8cc;
-  --sky: #b9dbf3;
-  --butter: #f2dc85;
-  --cursor: #5a45e0;
-  --redline: #d23f73;
-  --tape: rgb(242 220 133 / 0.78);
-  --tape-pink: rgb(245 184 204 / 0.8);
-  --shadow-piece: 0 1px 0 rgb(43 29 34 / 0.08), 0 14px 26px -16px rgb(43 29 34 / 0.45);
-  --shadow-lift: 0 26px 40px -24px rgb(94 26 54 / 0.55);
+  /* Neutrals */
+  --canvas: #f7f3ec; /* warm off-white page */
+  --surface: #fffdf9; /* image frames, toolbar */
+  --ink: #26201f; /* text */
+  --ink-2: #5f5754; /* secondary text, on canvas and surface only */
+  --line: #e3dbcf; /* rules and borders */
+  --dot: rgb(38 32 31 / 0.11); /* dotted canvas */
+
+  /* The three accents: tags, highlights, image backgrounds. Text on them is always ink. */
+  --blush: #f5c6d3;
+  --sky: #c4def3;
+  --butter: #f3e19a;
 
   /* Type */
-  --f-display: var(--font-display), "Arial Black", system-ui, sans-serif;
-  --f-body: var(--font-body), system-ui, sans-serif;
-  --f-type: var(--font-type), "Courier New", ui-monospace, monospace;
-  --t-mega: clamp(4.5rem, 17vw, 16rem);
-  --t-display: clamp(2.75rem, 7vw, 6rem);
-  --t-h2: clamp(2rem, 4vw, 3.5rem);
-  --t-h3: 1.375rem;
-  --t-body-l: 1.25rem;
+  --f-heading: var(--font-heading), Georgia, "Times New Roman", serif;
+  --f-body: var(--font-body), var(--font-body-he), system-ui, sans-serif;
+  --t-h1: clamp(2.75rem, 6vw, 4.75rem);
+  --t-h2: clamp(1.875rem, 3.2vw, 2.625rem);
+  --t-h3: 1.5rem;
+  --t-lead: clamp(1.125rem, 1.6vw, 1.3125rem);
   --t-body: 1.0625rem;
-  --t-small: 0.875rem;
+  --t-small: 0.9375rem;
   --t-label: 0.8125rem;
 
   /* Space (4px base) */
@@ -40,16 +34,15 @@
   --s-7: 48px;
   --s-8: 64px;
   --s-9: 96px;
-  --gutter-start: max(clamp(16px, 4vw, 56px), env(safe-area-inset-left, 0px));
-  --gutter-end: max(clamp(16px, 4vw, 56px), env(safe-area-inset-right, 0px));
-  --col-gap: clamp(12px, 1.6vw, 24px);
-  --content-max: 1360px;
-  --r-card: 18px;
-  --r-img: 14px;
+  --s-10: 128px;
+  --gutter-start: max(clamp(20px, 5vw, 64px), env(safe-area-inset-left, 0px));
+  --gutter-end: max(clamp(20px, 5vw, 64px), env(safe-area-inset-right, 0px));
+  --col-gap: clamp(16px, 2vw, 32px);
+  --content-max: 1240px;
+  --radius: 12px;
 
   /* Motion */
   --ease: cubic-bezier(0.2, 0.7, 0.1, 1);
-  --t-fast: 140ms;
-  --t-ui: 260ms;
-  --t-reveal: 560ms;
+  --t-fast: 150ms;
+  --t-reveal: 700ms;
 }

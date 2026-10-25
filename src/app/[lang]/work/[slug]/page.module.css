@@ -1,30 +1,12 @@
 .opener {
-  position: relative;
-  overflow: hidden;
-  padding-block: var(--s-9);
+  padding-block: var(--s-10) var(--s-9);
   padding-left: var(--gutter-start);
   padding-right: var(--gutter-end);
-  min-height: 70vh;
-}
-/* the one soft glow on the site (from the birthday reference) */
-.opener::before {
-  content: "";
-  position: absolute;
-  inset-inline-start: -10%;
-  top: -20%;
-  width: 50%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: var(--blush);
-  filter: blur(90px);
-  opacity: 0.55;
-  pointer-events: none;
 }
 .split {
-  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
-  gap: var(--s-7);
+  gap: var(--s-7) var(--col-gap);
   align-items: center;
 }
 .copy {
@@ -32,17 +14,17 @@
   gap: var(--s-5);
   justify-items: start;
 }
+.eyebrow {
+  color: var(--ink-2);
+  font-size: var(--t-label);
+}
 .copy h1 {
-  font-family: var(--f-display);
-  font-weight: 350;
-  font-size: clamp(2.75rem, 6vw, 5.25rem);
-  line-height: 1;
-  letter-spacing: -0.03em;
-  color: var(--plum);
+  font-size: var(--t-h1);
+  line-height: 1.02;
 }
 .copy p {
-  font-size: var(--t-body-l);
-  line-height: 1.45;
+  font-size: var(--t-lead);
+  line-height: 1.5;
   max-width: 36ch;
 }
 .muted {
@@ -53,22 +35,24 @@
   align-items: center;
   min-height: 46px;
   padding: 10px 22px;
-  border: 1.5px solid var(--plum);
+  border: 1px solid var(--ink);
   border-radius: 999px;
-  color: var(--plum);
-  font-weight: 600;
   font-size: var(--t-small);
+  font-weight: 500;
   text-decoration: none;
 }
 .back:hover {
-  background: var(--card);
+  background: var(--surface);
 }
 .image {
   aspect-ratio: 4 / 3.3;
-  border-radius: var(--r-card);
+  border-radius: var(--radius);
   overflow: hidden;
 }
 @media (max-width: 760px) {
+  .opener {
+    padding-block: var(--s-8);
+  }
   .split {
     grid-template-columns: 1fr;
   }

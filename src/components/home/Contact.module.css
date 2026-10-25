@@ -1,32 +1,25 @@
-.contact {
-  background: var(--plum);
-  color: var(--paper);
-}
-.layout {
+.box {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
-  gap: var(--s-7);
-  align-items: end;
+  justify-items: start;
+  gap: var(--s-5);
+  padding-top: var(--s-7);
+  border-top: 1px solid var(--line);
 }
-.say {
-  font-family: var(--f-display);
-  font-weight: 750;
-  font-size: var(--t-display);
-  line-height: 0.9;
-  letter-spacing: -0.035em;
-  font-variation-settings: "wdth" 80;
+.title {
+  font-size: var(--t-h2);
 }
-.links {
-  display: grid;
-  gap: var(--s-4);
+/* one butter highlight under the heading, like a marker swipe */
+.highlight {
+  background: linear-gradient(transparent 60%, var(--butter) 60%, var(--butter) 92%, transparent 92%);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding-inline: 2px;
 }
 .note {
-  font-family: var(--f-type);
-  font-size: 0.9375rem;
-  line-height: 1.45;
-  max-width: 44ch;
+  color: var(--ink-2);
+  max-width: 52ch;
 }
-.links ul {
+.links {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -43,26 +36,21 @@
   padding: 10px 22px;
   border-radius: 999px;
   font-size: var(--t-small);
-  font-weight: 600;
+  font-weight: 500;
 }
 .link {
-  border: 1.5px solid rgb(246 240 230 / 0.7);
+  border: 1px solid var(--ink);
   text-decoration: none;
   transition: background var(--t-fast) var(--ease);
 }
 .link:hover {
-  background: rgb(246 240 230 / 0.12);
-}
-.link:focus-visible {
-  outline-color: var(--sky);
+  background: var(--surface);
 }
 /* Not a link yet: dashed, so it doesn't pretend to work */
 .pending {
-  border: 1.5px dashed rgb(246 240 230 / 0.55);
-  color: rgb(246 240 230 / 0.85);
+  border: 1px dashed var(--ink-2);
+  color: var(--ink-2);
 }
 .pending small {
-  font-family: var(--f-type);
-  font-weight: 400;
-  font-size: 0.75rem;
+  font-size: var(--t-label);
 }

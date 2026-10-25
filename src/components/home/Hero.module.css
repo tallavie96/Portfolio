@@ -1,270 +1,70 @@
 .hero {
-  position: relative;
-  overflow: hidden;
-  padding-block: var(--s-7) var(--s-9);
-  padding-left: var(--gutter-start);
-  padding-right: var(--gutter-end);
-  /* dot-grid canvas */
-  background-image: radial-gradient(circle, rgb(94 26 54 / 0.16) 1px, transparent 1.5px);
-  background-size: 26px 26px;
+  padding-block: var(--s-10) var(--s-9);
 }
 
-.inner {
-  position: relative;
-  max-width: var(--content-max);
-  margin-inline: auto;
+.layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--s-7) var(--col-gap);
+  align-items: center;
+}
+
+.text {
+  grid-column: 1 / span 5;
+  display: grid;
+  justify-items: start;
+  gap: var(--s-5);
 }
 
 .name {
-  grid-area: 1 / 1;
-  position: relative;
-  z-index: 1;
-  font-family: var(--f-display);
-  font-weight: 800;
-  font-size: var(--t-mega);
-  line-height: 0.78;
-  letter-spacing: -0.05em;
-  color: var(--plum);
-  font-variation-settings: "wdth" 78, "opsz" 96;
-  margin-inline-start: -0.04em;
-}
-.name span {
-  display: block;
-}
-.name span:nth-child(2) {
-  text-align: end;
+  font-size: var(--t-h1);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
 }
 
-.redline {
-  position: absolute;
-  inset-inline-start: -26px;
-  top: 2%;
-  height: 34%;
-  width: 18px;
-  z-index: 3;
-  display: grid;
-  place-items: center;
-}
-.redline::before {
-  content: "";
-  position: absolute;
-  inset-block: 0;
-  inset-inline-start: 8px;
-  border-inline-start: 1px solid var(--redline);
-}
-.redline::after {
-  content: "";
-  position: absolute;
-  inset-block: 0;
-  inset-inline-start: 3px;
-  width: 11px;
-  border-block: 1px solid var(--redline);
-}
-.redline b {
-  position: relative;
-  z-index: 1;
-  font: 700 10px/1 var(--f-type);
-  color: #fff;
-  background: var(--redline);
-  padding: 3px 4px;
+.lead {
+  font-size: var(--t-lead);
+  line-height: 1.5;
+  max-width: 30ch;
 }
 
-/* ----- Collage board ----- */
-.board {
-  grid-area: 1 / 1;
-  position: relative;
-  z-index: 2;
-  pointer-events: none;
-  min-height: clamp(420px, 54vw, 780px);
-}
-
-.piece {
-  position: absolute;
-  pointer-events: auto;
-  transition:
-    transform var(--t-ui) var(--ease),
-    box-shadow var(--t-ui) var(--ease);
-}
-.cut {
-  background: var(--card);
-  padding: 10px;
-  box-shadow: var(--shadow-piece);
-}
-
-.kea {
-  width: min(44%, 540px);
-  inset-inline-start: 30%;
-  top: 50%;
-  transform: rotate(-2.5deg);
-}
-.kea img {
-  border-radius: 4px;
-}
-.frameLabel {
-  position: absolute;
-  top: -26px;
-  inset-inline-start: 0;
+.facts {
   color: var(--ink-2);
-  white-space: nowrap;
-}
-.keaSelection {
-  animation: select-on var(--t-ui) var(--ease) 2.6s both;
-}
-@keyframes select-on {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  font-size: var(--t-small);
 }
 
-.portrait {
-  width: min(17%, 210px);
-  inset-inline-start: 4%;
-  top: 30%;
-  transform: rotate(-4deg);
-  padding-bottom: 34px;
-}
-.portrait img {
-  border-radius: 2px;
-}
-.portrait figcaption {
-  position: absolute;
-  left: 10px;
-  right: 10px;
-  bottom: 8px;
-  font-family: var(--f-type);
-  font-size: 0.75rem;
-  color: var(--ink-2);
-}
-
-.sticky {
-  width: min(20%, 220px);
-  inset-inline-end: 3%;
-  top: 68%;
-  padding: 18px 18px 22px;
-  background: var(--butter);
-  transform: rotate(3deg);
-  box-shadow: 0 12px 20px -14px rgb(43 29 34 / 0.5);
-}
-.sticky p {
-  font-family: var(--f-type);
-  font-size: clamp(0.8125rem, 1.1vw, 1rem);
-  line-height: 1.4;
-}
-.stickyTag {
-  display: inline-block;
-  margin-top: 6px;
-  font-weight: 700;
-  font-size: 0.75rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.stamp {
-  width: clamp(92px, 10vw, 132px);
-  aspect-ratio: 1;
-  inset-inline-start: 71%;
-  top: 50%;
-  border-radius: 50%;
-  background: var(--sky);
-  color: var(--plum);
-  display: grid;
-  place-content: center;
-  text-align: center;
-  transform: rotate(10deg);
-  font-family: var(--f-display);
-  font-weight: 750;
-  font-size: clamp(0.8rem, 1.1vw, 1rem);
-  line-height: 1;
-  outline: 2px dashed var(--plum);
-  outline-offset: -8px;
-}
-
-.cursor {
-  position: absolute;
-  z-index: 4;
-  inset-inline-start: 58%;
-  top: 74%;
-  display: flex;
-  align-items: flex-start;
-  gap: 2px;
-  pointer-events: none;
-  animation: cursor-in 2.2s var(--ease) 0.5s both;
-}
-.cursor svg {
-  width: 18px;
-  height: 18px;
-  flex: none;
-}
-.cursor b {
-  margin-top: 12px;
-  padding: 4px 7px;
-  border-radius: 2px 7px 7px 7px;
-  background: var(--cursor);
-  color: #fff;
-  font: 500 11px/1 var(--f-body);
-}
-:global([dir="rtl"]) .cursor svg {
-  transform: scaleX(-1);
-}
-@keyframes cursor-in {
-  from { translate: 160px 120px; opacity: 0; }
-  25% { opacity: 1; }
-  to { translate: 0 0; opacity: 1; }
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .piece:hover {
-    transform: rotate(0deg) translateY(-6px) scale(1.01);
-    box-shadow: var(--shadow-lift);
-  }
-}
-
-/* ----- Foot ----- */
-.foot {
-  position: relative;
-  z-index: 3;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: end;
-  gap: var(--s-5);
-  margin-top: var(--s-6);
-}
-.who {
-  display: grid;
-  gap: 6px;
-  max-width: 46ch;
-}
-.role {
-  font-family: var(--f-display);
-  font-weight: 650;
-  font-size: var(--t-h3);
-  color: var(--plum);
-}
 .actions {
   display: flex;
   flex-wrap: wrap;
   gap: var(--s-3);
+  margin-top: var(--s-2);
 }
 
-@media (max-width: 760px) {
-  .redline {
-    display: none;
+.featured {
+  grid-column: 7 / span 6;
+  display: grid;
+  gap: var(--s-3);
+}
+.frame {
+  overflow: hidden;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  background: var(--surface);
+}
+.frame img {
+  width: 100%;
+}
+.featured figcaption {
+  color: var(--ink-2);
+  font-size: var(--t-label);
+}
+
+@media (max-width: 860px) {
+  .hero {
+    padding-block: var(--s-8) var(--s-8);
   }
-  .name span:nth-child(2) {
-    text-align: start;
-    padding-inline-start: 0.3em;
+  .text,
+  .featured {
+    grid-column: 1 / -1;
   }
-  .board {
-    grid-area: 2 / 1;
-    min-height: 0;
-    aspect-ratio: 1 / 1.15;
-    margin-top: var(--s-6);
-  }
-  .kea { width: 86%; inset-inline-start: 7%; top: 22%; }
-  .portrait { width: 38%; inset-inline-start: auto; inset-inline-end: 2%; top: 0; }
-  .sticky { width: 44%; inset-inline-end: auto; inset-inline-start: 0; top: 76%; }
-  .stamp { inset-inline-start: auto; inset-inline-end: 6%; top: 72%; }
-  .cursor { inset-inline-start: 58%; top: 52%; }
 }

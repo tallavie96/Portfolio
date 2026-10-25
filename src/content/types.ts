@@ -11,3 +11,6 @@ export interface Copy {
 
 export const draft = (text: string): Copy => ({ text, status: "draft" });
 export const approved = (text: string): Copy => ({ text, status: "approved" });
+
+/** The three accent colors of the identity. */
+export type AccentColor = "blush" | "sky" | "butter";

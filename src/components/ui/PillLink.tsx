@@ -2,12 +2,11 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import styles from "./ui.module.css";
 
-type Variant = "primary" | "ghost" | "ghostOnDark";
+type Variant = "primary" | "ghost";
 
 const variantClass: Record<Variant, string> = {
   primary: styles.primary,
   ghost: styles.ghost,
-  ghostOnDark: `${styles.ghost} ${styles.onDark}`,
 };
 
 export function PillLink({
@@ -26,7 +25,7 @@ export function PillLink({
       {children}
       {arrow && (
         <svg className={styles.arrow} viewBox="0 0 14 14" aria-hidden="true">
-          <path d="M1 7h11M8 3l4 4-4 4" fill="none" stroke="currentColor" strokeWidth="1.6" />
+          <path d="M1 7h11M8 3l4 4-4 4" fill="none" stroke="currentColor" strokeWidth="1.5" />
         </svg>
       )}
     </Link>

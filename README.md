@@ -29,7 +29,7 @@ npm start          # serve the production build
 | Projects (titles, summaries, tags, cover images) | `src/content/projects.ts` |
 | Images | `src/assets/images/` (imported, so Next sizes and optimizes them) |
 | Design tokens (colors, type, spacing, motion) | `src/styles/tokens.css` |
-| Fonts | `src/styles/fonts.ts` |
+| Fonts (Frank Ruhl Libre headings, IBM Plex Sans + Plex Sans Hebrew text) | `src/styles/fonts.ts` |
 | Languages and text direction | `src/i18n/config.ts` |
 | Pages | `src/app/[lang]/` |
 | Visual concept previews (Stage 2) | `design/` |
@@ -39,13 +39,17 @@ npm start          # serve the production build
 
 Each paragraph that still needs approval is written as `draft("...")` and shows a "Draft copy" tag on the site. When the text is final, change it to `approved("...")` and the tag disappears.
 
+### Scroll reveals
+
+Add `data-reveal` to an element to fade it in as it scrolls into view (optionally `style={{ "--reveal-i": n }}` to stagger). Elements already on screen at load are shown immediately, and reduced-motion users see no movement.
+
 ### Adding a project cover
 
 Put the image in `src/assets/images/`, import it in `src/content/projects.ts` and set it as the project's `cover`, with a `coverAlt` that describes the screens.
 
 ### Hebrew
 
-The layout is direction-aware (`dir` on `<html>`, logical CSS properties). Hebrew is paused: to turn it on, add a Hebrew dictionary and project text, add `"he"` to `enabledLocales`, and pick Hebrew partner fonts (the current fonts have no Hebrew glyphs).
+The layout is direction-aware (`dir` on `<html>`, logical CSS properties). Hebrew is paused: to turn it on, add a Hebrew dictionary and project text, and add `"he"` to `enabledLocales`. The fonts already include Hebrew.
 
 ## Deploying
 

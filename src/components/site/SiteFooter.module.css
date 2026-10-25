@@ -1,18 +1,16 @@
 .footer {
-  background: var(--plum);
-  color: var(--paper);
   padding-left: var(--gutter-start);
   padding-right: var(--gutter-end);
   /* leaves room for the floating toolbar */
   padding-block: var(--s-5) calc(var(--s-9) + env(safe-area-inset-bottom, 0px));
-  border-top: 1px solid rgb(246 240 230 / 0.2);
 }
 .row {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: var(--s-3);
-}
-.row a:focus-visible {
-  outline-color: var(--sky);
+  padding-top: var(--s-5);
+  border-top: 1px solid var(--line);
+  color: var(--ink-2);
+  font-size: var(--t-label);
 }

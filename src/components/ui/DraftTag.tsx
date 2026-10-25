@@ -1,8 +1,8 @@
 import type { Copy } from "@/content/types";
-import styles from "./ui.module.css";
+import { Marker } from "./Marker";
 
 export function DraftTag({ label }: { label: string }) {
-  return <span className={styles.draft}>{label}</span>;
+  return <Marker color="butter">{label}</Marker>;
 }
 
 /** Renders copy text, followed by a draft tag when it isn't approved yet. */

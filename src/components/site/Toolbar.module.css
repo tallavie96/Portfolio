@@ -8,12 +8,11 @@
   align-items: center;
   gap: 2px;
   max-width: calc(100vw - 32px);
-  padding: 5px;
-  border: 1.5px solid var(--plum);
+  padding: 4px;
+  border: 1px solid var(--line);
   border-radius: 999px;
-  background: var(--card);
-  color: var(--plum);
-  box-shadow: 0 14px 30px -16px rgb(94 26 54 / 0.55);
+  background: var(--surface);
+  box-shadow: 0 8px 24px -14px rgb(38 32 31 / 0.35);
 }
 .toolbar a {
   display: inline-flex;
@@ -21,27 +20,28 @@
   min-height: 40px;
   padding: 0 14px;
   border-radius: 999px;
+  color: var(--ink);
   font-size: var(--t-small);
-  font-weight: 600;
+  font-weight: 500;
   text-decoration: none;
   white-space: nowrap;
   transition: background var(--t-fast) var(--ease);
 }
 .toolbar a:hover {
-  background: var(--blush);
+  background: var(--canvas);
 }
 .toolbar a[aria-current] {
-  background: var(--plum);
-  color: var(--paper);
+  background: var(--ink);
+  color: var(--canvas);
 }
 .toolbar a:focus-visible {
   outline-offset: 2px;
+  border-radius: 999px;
 }
 .mark {
   flex: none;
-  font-family: var(--f-display);
-  font-weight: 800;
-  letter-spacing: -0.03em;
+  font-family: var(--f-heading);
+  font-weight: 600;
 }
 .items {
   list-style: none;

@@ -1,79 +1,50 @@
-.about {
-  background: var(--sky);
-}
-.title {
-  margin-bottom: var(--s-7);
-  font-family: var(--f-display);
-  font-weight: 750;
-  font-size: var(--t-h2);
-  line-height: 0.95;
-  letter-spacing: -0.03em;
-  color: var(--plum);
-  font-variation-settings: "wdth" 85;
-}
 .layout {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
-  gap: var(--s-6) var(--col-gap);
-  align-items: center;
+  gap: var(--s-7) var(--col-gap);
+  align-items: start;
 }
 .photo {
   grid-column: 1 / span 4;
-  position: relative;
-  padding: 12px 12px 44px;
-  background: var(--card);
-  transform: rotate(-3deg);
-  box-shadow: 0 18px 30px -20px rgb(43 29 34 / 0.5);
+  overflow: hidden;
+  border-radius: var(--radius);
 }
 .photo img {
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  border-radius: 4px;
-}
-.photo figcaption {
-  position: absolute;
-  left: 14px;
-  right: 14px;
-  bottom: 12px;
-  font-family: var(--f-type);
-  font-size: var(--t-label);
 }
 .text {
   grid-column: 6 / span 7;
   display: grid;
-  gap: var(--s-6);
+  gap: var(--s-7);
 }
 .intro {
-  font-family: var(--f-display);
-  font-weight: 400;
-  font-size: clamp(1.75rem, 3.2vw, 2.75rem);
-  line-height: 1.12;
-  letter-spacing: -0.02em;
-  color: var(--plum);
-  font-variation-settings: "wdth" 92;
+  font-family: var(--f-heading);
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  line-height: 1.35;
+  max-width: 34ch;
 }
 .facts {
-  margin: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 180px), 1fr));
-  gap: var(--col-gap);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 170px), 1fr));
+  gap: var(--s-5) var(--col-gap);
 }
 .facts div {
   display: grid;
-  gap: 2px;
-  padding-top: var(--s-2);
-  border-top: 1.5px solid var(--plum);
+  align-content: start;
+  gap: var(--s-1);
+  padding-top: var(--s-3);
+  border-top: 1px solid var(--line);
 }
 .facts dt {
-  color: var(--plum);
-}
-.facts dd {
-  margin: 0;
+  color: var(--ink-2);
+  font-size: var(--t-label);
 }
 @media (max-width: 760px) {
   .photo {
-    grid-column: 2 / span 10;
+    grid-column: 1 / -1;
+    max-width: 420px;
   }
   .text {
     grid-column: 1 / -1;

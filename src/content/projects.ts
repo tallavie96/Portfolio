@@ -1,16 +1,15 @@
 import type { StaticImageData } from "next/image";
 import type { Locale } from "@/i18n/config";
-import { draft, type Copy } from "./types";
+import { draft, type AccentColor, type Copy } from "./types";
 import keaCover from "@/assets/images/kea.webp";
 
-export type ProjectColor = "sky" | "butter" | "blush";
 export type ProjectType = "case-study" | "collection";
 
 interface ProjectBase {
   slug: string;
   number: string;
   type: ProjectType;
-  color: ProjectColor;
+  color: AccentColor;
   cover: StaticImageData | null;
 }
 

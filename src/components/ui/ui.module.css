@@ -1,17 +1,23 @@
-/* Draft tag: marks copy Tal hasn't approved yet */
-.draft {
+/* Marker tag: the site's one playful detail, used for tags and draft markers */
+.marker {
   display: inline-block;
-  font-family: var(--f-type);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  background: var(--butter);
+  padding: 2px 8px;
+  background: var(--marker, var(--butter));
   color: var(--ink);
-  padding: 1px 7px;
-  transform: rotate(-2deg);
-  vertical-align: middle;
+  font-family: var(--f-body);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  text-transform: uppercase;
   white-space: nowrap;
+  transform: rotate(-1.5deg);
+  vertical-align: middle;
+}
+:global(:lang(he)) .marker {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 0.8125rem;
 }
 
 /* Placeholder: hatched, dashed, visibly not real work */
@@ -23,54 +29,17 @@
   padding: var(--s-4);
   text-align: center;
   background:
-    repeating-linear-gradient(135deg, transparent 0 9px, rgb(43 29 34 / 0.07) 9px 10px),
-    var(--ph-bg, var(--sky));
-  outline: 1.5px dashed rgb(43 29 34 / 0.35);
-  outline-offset: -8px;
+    repeating-linear-gradient(135deg, transparent 0 10px, rgb(38 32 31 / 0.06) 10px 11px),
+    color-mix(in srgb, var(--ph-bg, var(--sky)) 45%, var(--surface));
 }
 .placeholder span {
-  font-family: var(--f-type);
-  font-size: var(--t-label);
-  background: var(--card);
   padding: 4px 10px;
+  background: var(--surface);
+  color: var(--ink-2);
+  font-size: var(--t-label);
 }
 
-/* Selection box: design-tool handles. The parent decides when it shows. */
-.selection {
-  position: absolute;
-  inset: -7px;
-  pointer-events: none;
-  border: 1.5px solid var(--cursor);
-  border-radius: inherit;
-  opacity: 0;
-  transition: opacity var(--t-fast) var(--ease);
-}
-.selection i {
-  position: absolute;
-  width: 9px;
-  height: 9px;
-  background: var(--card);
-  border: 1.5px solid var(--cursor);
-}
-.selection i:nth-child(1) { top: -5px; left: -5px; }
-.selection i:nth-child(2) { top: -5px; right: -5px; }
-.selection i:nth-child(3) { bottom: -5px; left: -5px; }
-.selection i:nth-child(4) { bottom: -5px; right: -5px; }
-
-/* Tape strip */
-.tape {
-  position: absolute;
-  width: 96px;
-  height: 26px;
-  background: var(--tape);
-  clip-path: polygon(3% 0, 97% 6%, 100% 50%, 96% 100%, 2% 94%, 0 50%);
-  z-index: 1;
-}
-.tapePink {
-  background: var(--tape-pink);
-}
-
-/* Pill buttons */
+/* Buttons */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -78,38 +47,27 @@
   min-height: 46px;
   padding: 10px 22px;
   border-radius: 999px;
-  border: 1.5px solid var(--plum);
-  font-weight: 600;
+  border: 1px solid var(--ink);
   font-size: var(--t-small);
+  font-weight: 500;
   text-decoration: none;
   transition:
     background var(--t-fast) var(--ease),
-    color var(--t-fast) var(--ease),
-    transform var(--t-ui) var(--ease);
-}
-.btn:hover {
-  transform: translateY(-2px);
+    color var(--t-fast) var(--ease);
 }
 .primary {
-  background: var(--plum);
-  color: var(--paper);
+  background: var(--ink);
+  color: var(--canvas);
 }
 .primary:hover {
-  background: var(--plum-deep);
+  background: #3b3332;
 }
 .ghost {
   background: transparent;
-  color: var(--plum);
+  color: var(--ink);
 }
 .ghost:hover {
-  background: var(--card);
-}
-.onDark {
-  color: var(--paper);
-  border-color: rgb(246 240 230 / 0.7);
-}
-.onDark:hover {
-  background: rgb(246 240 230 / 0.12);
+  background: var(--surface);
 }
 .arrow {
   width: 14px;
@@ -118,15 +76,4 @@
 }
 :global([dir="rtl"]) .arrow {
   transform: scaleX(-1);
-}
-
-/* Torn paper edge sitting on top of a band */
-.torn {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: -17px;
-  height: 18px;
-  background: inherit;
-  pointer-events: none;
 }
