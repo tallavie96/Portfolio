@@ -216,7 +216,7 @@
 
 .caption {
   position: absolute;
-  inset-inline-start: clamp(16px, 20%, 280px);
+  inset-inline-start: clamp(20px, 4vw, 56px);
   bottom: 0;
   display: flex;
   align-items: center;
@@ -684,16 +684,12 @@
     object-position: 50% 50%;
   }
   .caption {
-    inset-inline: 16px;
+    inset-inline: 20px;
     gap: 14px;
     padding-block: 16px;
   }
   .captionItem {
     gap: 14px;
-  }
-  .thumb {
-    width: 64px;
-    height: 64px;
   }
   .thumb {
     width: 64px;
