@@ -45,7 +45,7 @@ export function HomeHero({
 
   return (
     <section className={styles.hero} aria-roledescription="carousel" aria-label={labels.slideshow}>
-      <div className={styles.frame}>
+      <div className={styles.frame} data-photo={Boolean(active.heroPhoto)}>
         {projects.map((p, i) => {
           const img = image(p);
           return (
@@ -57,7 +57,16 @@ export function HomeHero({
               aria-hidden={i !== current}
               style={{ "--tint": tints[i % tints.length] } as CSSProperties}
             >
-              {p.phones.length > 0 ? (
+              {p.heroPhoto ? (
+                <Image
+                  src={p.heroPhoto.src}
+                  alt={p.heroPhoto.alt}
+                  fill
+                  sizes="100vw"
+                  priority={i === 0}
+                  className={styles.slidePhoto}
+                />
+              ) : p.phones.length > 0 ? (
                 <div className={styles.slidePhones}>
                   <PhoneTrio phones={p.phones} sizes="(max-width: 760px) 30vw, 20vw" priority={i === 0} />
                 </div>
@@ -107,6 +116,7 @@ export function HomeHero({
             return (
               <div
                 key={p.slug}
+                data-photo={Boolean(p.heroPhoto)}
                 className={styles.captionItem}
                 data-cap={i}
                 data-active={i === current}

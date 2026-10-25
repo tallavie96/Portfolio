@@ -12,6 +12,7 @@ import muniboxManage from "@/assets/images/munibox-manage.webp";
 import hertzDashboard from "@/assets/images/hertz-dashboard.webp";
 import hertzOrders from "@/assets/images/hertz-orders.webp";
 import hertzStats from "@/assets/images/hertz-stats.webp";
+import hertzLandscape from "@/assets/images/hertz-landscape.webp";
 import boostWall1 from "@/assets/images/boost-wall-1.webp";
 import boostWall2 from "@/assets/images/boost-wall-2.webp";
 import keaProducts from "@/assets/images/kea-products.webp";
@@ -31,6 +32,8 @@ interface ProjectBase {
   phones: { src: StaticImageData; alt: string }[];
   /** Desktop screen shown in a browser frame (portals, dashboards). */
   desktop: { src: StaticImageData; alt: string } | null;
+  /** Full-bleed photo for the homepage slide, used instead of screens when set. */
+  heroPhoto?: { src: StaticImageData; alt: string };
 }
 
 interface ProjectText {
@@ -77,6 +80,10 @@ const base: ProjectBase[] = [
       { src: hertzStats, alt: "Hertz agency portal statistics screen (mock data)" },
     ],
     phones: [],
+    heroPhoto: {
+      src: hertzLandscape,
+      alt: "A car driving along a curving mountain viaduct through autumn forest",
+    },
     desktop: {
       src: hertzDashboard,
       alt: "Hertz agency portal dashboard in Hebrew: summary cards, recent orders and agent alerts (mock data)",
