@@ -5,8 +5,8 @@ import styles from "./Home.module.css";
 
 /**
  * Entrance (after Moheim): a grey curtain with the name in the corner while a ring
- * draws itself closed; then the curtain lifts and the ring lands as the full stop
- * after the big name. Plays once per visit, never with reduced motion.
+ * draws itself closed; then the curtain lifts and the ring fades out. Plays once per
+ * visit, never with reduced motion.
  * Without JavaScript the curtain still lifts on its own (CSS), so nothing stays hidden.
  */
 export function Intro({ name }: { name: string }) {
@@ -27,16 +27,7 @@ export function Intro({ name }: { name: string }) {
     }
 
     root.dataset.intro = "running";
-    const ring = el.querySelector<SVGSVGElement>("[data-ring]");
-    const fly = setTimeout(() => {
-      const stop = document.querySelector("[data-stop]");
-      if (ring && stop) {
-        const to = stop.getBoundingClientRect();
-        const from = ring.getBoundingClientRect();
-        const dx = to.left + to.width / 2 - (from.left + from.width / 2);
-        const dy = to.top + to.height / 2 - (from.top + from.height / 2);
-        ring.style.transform = `translate(${dx}px, ${dy}px) scale(${to.width / from.width})`;
-      }
+    const reveal = setTimeout(() => {
       el.dataset.state = "revealing";
     }, 1150);
     const finish = setTimeout(() => {
@@ -44,7 +35,7 @@ export function Intro({ name }: { name: string }) {
       delete root.dataset.intro;
     }, 2150);
     return () => {
-      clearTimeout(fly);
+      clearTimeout(reveal);
       clearTimeout(finish);
       delete root.dataset.intro;
     };

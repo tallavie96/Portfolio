@@ -7,7 +7,7 @@ Running list of decisions, open questions and next steps. Updated at each stage.
 **Direction chosen: Option B, after moheim.com (2026-10-25).** It is now the real homepage at `/en`. Options A and C and the `/en/options` index were removed (git history has them, commit `f09e664`).
 
 Homepage now:
-- **Entrance (after Moheim's loader):** grey curtain (#555753) with the name small in the bottom corner; a thin ring draws itself closed (~1s); the curtain lifts (0.9s) while the ring flies to and becomes the full stop in "TAL LAVIE." (Moheim's ring becomes the O in MOHEIM; Tal's name has no O, so it lands as the full stop). About 2.2s total, once per visit (sessionStorage), skipped with reduced motion; without JavaScript the curtain still lifts by CSS
+- **Entrance (after Moheim's loader):** grey curtain (#555753) with the name small in the bottom corner; a thin ring draws itself closed (~1s); the curtain lifts (0.9s) and the ring fades out (the full stop after the name was removed at Tal's request; the name is now left-aligned and heavier, weight 500). About 2.2s total, once per visit (sessionStorage), skipped with reduced motion; without JavaScript the curtain still lifts by CSS
 - **Header:** name (wide-tracked caps) and "Product designer" only. Work, About and Contact moved to the footer
 - **Opening:** framed slide per project in pale tints with "TAL LAVIE." across it; caption `01 / 03` + thumbnail + kind + title linking to the project; auto-advance 6s, pause button
 - **Below:** project rows and About with CSS scroll-driven reveals (static where unsupported or with reduced motion)

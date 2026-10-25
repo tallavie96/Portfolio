@@ -12,6 +12,7 @@ import muniboxManage from "@/assets/images/munibox-manage.webp";
 import hertzDashboard from "@/assets/images/hertz-dashboard.webp";
 import hertzOrders from "@/assets/images/hertz-orders.webp";
 import hertzStats from "@/assets/images/hertz-stats.webp";
+import hertzThumb from "@/assets/images/hertz-thumb.webp";
 import hertzLandscape from "@/assets/images/hertz-landscape.webp";
 import boostBooth from "@/assets/images/boost-booth.webp";
 import muniboxInHand from "@/assets/images/munibox-in-hand.webp";
@@ -36,6 +37,8 @@ interface ProjectBase {
   desktop: { src: StaticImageData; alt: string } | null;
   /** Full-bleed photo for the homepage slide, used instead of screens when set. */
   heroPhoto?: { src: StaticImageData; alt: string; position?: string; mobilePosition?: string };
+  /** Square crop for the small caption thumbnail, when the default doesn't fit. */
+  thumb?: StaticImageData;
 }
 
 interface ProjectText {
@@ -94,6 +97,7 @@ const base: ProjectBase[] = [
       position: "72% 70%",
       mobilePosition: "84% 60%",
     },
+    thumb: hertzThumb,
     desktop: {
       src: hertzDashboard,
       alt: "Hertz agency portal dashboard in Hebrew: summary cards, recent orders and agent alerts (mock data)",

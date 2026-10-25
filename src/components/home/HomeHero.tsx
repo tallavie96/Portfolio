@@ -43,7 +43,7 @@ export function HomeHero({
   const active = projects[current];
   const image = (p: HomeProject) => p.cover ?? p.gallery[0] ?? null;
   // Caption thumbnail: a real screen of the work (middle phone, or the portal)
-  const thumb = (p: HomeProject) => p.phones[1] ?? p.desktop ?? image(p);
+  const thumb = (p: HomeProject) => (p.thumb ? { src: p.thumb, alt: "" } : (p.phones[1] ?? p.desktop ?? image(p)));
 
   return (
     <section className={styles.hero} aria-roledescription="carousel" aria-label={labels.slideshow}>
@@ -113,10 +113,8 @@ export function HomeHero({
           );
         })}
 
-        {/* The full stop is where the intro's loading ring lands */}
         <p className={styles.wordmark} aria-hidden="true">
           {name}
-          <span className={styles.stop} data-stop />
         </p>
 
         <div className={styles.caption}>
@@ -143,7 +141,7 @@ export function HomeHero({
                         alt=""
                         fill
                         sizes="96px"
-                        className={p.desktop && !p.phones.length ? styles.thumbDesktop : styles.thumbPhone}
+                        className={p.phones.length ? styles.thumbPhone : styles.thumbDesktop}
                       />
                     ) : (
                       <span className={styles.thumbPending} />

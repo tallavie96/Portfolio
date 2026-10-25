@@ -202,28 +202,17 @@
   inset-inline: 0;
   top: 9%;
   margin: 0;
-  text-align: center;
-  font-weight: 300;
+  padding-inline: clamp(20px, 4vw, 56px);
+  text-align: start;
+  font-weight: 500;
   font-size: clamp(3.25rem, 10.5vw, 11rem);
   line-height: 1;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.02em;
   text-transform: uppercase;
   white-space: nowrap;
   pointer-events: none;
 }
 
-/* Full stop after the name: the intro ring lands here */
-.stop {
-  display: inline-block;
-  width: 0.1em;
-  height: 0.1em;
-  margin-inline-start: 0.06em;
-  border-radius: 50%;
-  background: currentColor;
-}
-:global(html[data-intro="running"]) .stop {
-  visibility: hidden;
-}
 
 .caption {
   position: absolute;
@@ -569,6 +558,11 @@
     fill 400ms ease 450ms,
     stroke 400ms ease 350ms;
 }
+/* No landing spot: the ring fades out as the curtain lifts */
+.intro[data-state="revealing"] .ring {
+  opacity: 0;
+  transition: opacity 500ms ease;
+}
 .intro[data-state="revealing"] .ring circle {
   fill: var(--ink);
   stroke: var(--ink);
@@ -642,7 +636,8 @@
   }
   .wordmark {
     top: 7%;
-    font-size: 14vw;
+    padding-inline: 20px;
+    font-size: 13vw;
   }
   .slidePhoto {
     object-position: var(--pos-m, 50% 50%);
