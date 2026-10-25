@@ -42,6 +42,8 @@ export function HomeHero({
 
   const active = projects[current];
   const image = (p: HomeProject) => p.cover ?? p.gallery[0] ?? null;
+  // Caption thumbnail: a real screen of the work (middle phone, or the portal)
+  const thumb = (p: HomeProject) => p.phones[1] ?? p.desktop ?? image(p);
 
   return (
     <section className={styles.hero} aria-roledescription="carousel" aria-label={labels.slideshow}>
@@ -134,7 +136,21 @@ export function HomeHero({
                   </bdi>
                 </span>
                 <Link href={p.href} className={styles.captionLink}>
+                  <span className={styles.thumb}>
+                    {thumb(p) ? (
+                      <Image
+                        src={thumb(p)!.src}
+                        alt=""
+                        fill
+                        sizes="96px"
+                        className={p.desktop && !p.phones.length ? styles.thumbDesktop : styles.thumbPhone}
+                      />
+                    ) : (
+                      <span className={styles.thumbPending} />
+                    )}
+                  </span>
                   <span className={styles.captionText}>
+                    <span className={styles.kind}>{p.kind}</span>
                     <span className={styles.captionTitle}>
                       {p.title}
                       <svg className={styles.arrow} viewBox="0 0 16 16" aria-hidden="true">

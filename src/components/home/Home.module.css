@@ -79,8 +79,9 @@
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to bottom, rgb(20 20 18 / 0.28), transparent 38%),
-    linear-gradient(to top, rgb(20 20 18 / 0.45), transparent 32%);
+    linear-gradient(to bottom, rgb(14 14 12 / 0.5), transparent 45%),
+    linear-gradient(to top, rgb(14 14 12 / 0.6), transparent 40%),
+    rgb(14 14 12 / 0.28);
   pointer-events: none;
 }
 /* White type while a photo slide is showing */
@@ -244,6 +245,13 @@
     opacity: 0;
     transform: translateY(8px);
   }
+}
+.thumb img.thumbDesktop {
+  object-fit: cover;
+  object-position: right top;
+}
+.frame[data-photo="true"] .kind {
+  color: rgb(255 255 255 / 0.8);
 }
 .counter {
   font-size: 0.9375rem;
@@ -687,6 +695,10 @@
   }
   .captionItem {
     gap: 14px;
+  }
+  .thumb {
+    width: 64px;
+    height: 64px;
   }
   .thumb {
     width: 64px;
