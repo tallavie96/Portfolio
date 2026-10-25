@@ -329,18 +329,21 @@
   overflow: hidden;
   background: var(--tint);
 }
-.plate img {
+.plate > img {
   object-fit: contain;
   padding: 8%;
 }
 .platePhones {
   position: absolute;
-  inset: 8% 6%;
+  inset: 7% 4%;
   display: flex;
   justify-content: center;
 }
+.platePhones .trio {
+  gap: clamp(10px, 1.6vw, 24px);
+}
 .platePhones .phone {
-  max-width: 30%;
+  max-width: 31%;
 }
 .platePending {
   position: absolute;
@@ -549,7 +552,7 @@
       animation-timeline: view();
       animation-range: entry 0% cover 35%;
     }
-    .plate img {
+    .plate > img {
       animation: drift linear both;
       animation-timeline: view();
     }
