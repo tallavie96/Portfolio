@@ -36,6 +36,11 @@ Stage 1 approved 2026-10-25.
 - Type: Bricolage Grotesque (display, width axis), IBM Plex Sans (body), Courier Prime (labels, notes). Neither Bricolage nor Courier Prime has Hebrew; partners needed when Hebrew resumes
 - Hover on projects: lift + straighten + selection box. Touch: no hover effects. Reduced motion: no movement
 - Toolbar: cream pill, plum border, bottom center
+- Layouts from Tal's extra references (2026-10-25):
+  - Homepage work grid: three equal cards in one row (from "Explore styles"), replacing the staggered grid
+  - A · Case-study opener: split layout, text + role pills + chip button left, large rounded image right, one soft pink glow (from the birthday hero). The only gradient on the site
+  - B · Story chapters: image + text rows (from Nest "Installation / Removal"). Also used for AI playground entries
+  - C · Mosaic wall: tight edge-to-edge mosaic (from Nest "Project gallery"). AI playground overview and in-case-study screen galleries
 - Portrait used via `design/portrait-preview.webp` (resized, EXIF/GPS stripped). Original `IMG_2491.jpeg` still has GPS data
 
 ## Proposed decisions (Stage 1, approved)
@@ -51,7 +56,6 @@ Stage 1 approved 2026-10-25.
 
 ## Open questions
 
-- Visual references received via Canva share links: scrapbook wedding site, "Nest Wallpapers" (bold pink/blue), birthday site (cream + plum). v2 concept built from them: `design/visual-concept-v2.html`. Waiting for Tal to choose v1, v2 or a mix
 
 See the Stage 1 questions in the chat. Answers get recorded here.
 

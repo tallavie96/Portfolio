@@ -200,19 +200,17 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--cursor); outlin
 .plum .head h2 { color: var(--paper); }
 
 /* ---------- Work grid on blush ---------- */
-.work { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--s-7) var(--col-gap); }
-.work > .cell { display: grid; gap: 14px; align-content: start; }
+.work { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s-6) var(--col-gap); }
+.work > .cell { display: grid; grid-template-rows: auto 1fr; gap: 14px; align-content: start; }
 .cell .frame-label { display: flex; justify-content: space-between; gap: var(--s-3); padding-inline: 4px; font-family: var(--f-type); font-size: .8125rem; color: var(--ink); }
 .card {
   position: relative; display: grid; gap: var(--s-3); align-content: start; text-decoration: none;
   background: var(--card); border-radius: 18px; padding: 12px 12px 20px;
   transition: transform var(--t-ui) var(--ease), box-shadow var(--t-ui) var(--ease);
 }
-.cell:nth-child(1) { grid-column: 1 / span 7; } .cell:nth-child(1) .card { transform: rotate(-.6deg); }
-.cell:nth-child(2) { grid-column: 8 / span 5; margin-top: var(--s-9); } .cell:nth-child(2) .card { transform: rotate(.8deg); }
-.cell:nth-child(3) { grid-column: 3 / span 8; } .cell:nth-child(3) .card { transform: rotate(-.4deg); }
+/* three equal cards in one row, as in the "Explore styles" reference */
 .card .art { border-radius: var(--r-img); overflow: hidden; aspect-ratio: 4 / 3; background: var(--bgc); display: grid; place-items: center; }
-.cell:nth-child(3) .art { aspect-ratio: 1400 / 988; }
+.cell:nth-child(3) .art img { object-fit: contain; }
 .card .art img { width: 100%; height: 100%; object-fit: cover; }
 .card .meta { padding-inline: 8px; display: grid; gap: 4px; }
 .card .meta .row { display: flex; justify-content: space-between; gap: var(--s-3); }
@@ -231,7 +229,6 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--cursor); outlin
 .placeholder span { font-family: var(--f-type); font-size: .8125rem; background: var(--card); padding: 4px 10px; }
 @media (max-width: 760px) {
   .work { grid-template-columns: 1fr; }
-  .cell:nth-child(n) { grid-column: 1 / -1; margin-top: 0; }
 }
 
 /* ---------- About on sky ---------- */
@@ -255,6 +252,45 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--cursor); outlin
 .contact .say { font-family: var(--f-display); font-weight: 750; font-size: var(--t-display); line-height: .9; letter-spacing: -0.035em; font-variation-settings: "wdth" 80; }
 .contact .links { display: grid; gap: var(--s-3); justify-items: start; }
 .contact .row { display: flex; flex-wrap: wrap; gap: var(--s-3); }
+
+/* ---------- Layout patterns from Tal's references ---------- */
+.pattern-note { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--s-3); margin-bottom: var(--s-5); font-family: var(--f-type); font-size: .8125rem; }
+.band.cream { background: var(--paper); overflow: hidden; }
+/* A. split hero (Birthday reference): case-study opener */
+.split { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: var(--s-7); align-items: center; position: relative; }
+.split::before { content: ""; position: absolute; inset-inline-start: -12%; top: -30%; width: 55%; aspect-ratio: 1; border-radius: 50%; background: var(--blush); filter: blur(90px); opacity: .55; z-index: 0; pointer-events: none; }
+.split > * { position: relative; z-index: 1; }
+.split .copy { display: grid; gap: var(--s-5); justify-items: start; }
+.split h3 { font-family: var(--f-display); font-weight: 350; font-size: clamp(2.5rem, 5.4vw, 4.75rem); line-height: 1; letter-spacing: -0.03em; color: var(--plum); }
+.split .copy p { font-size: var(--t-body-l); line-height: 1.45; max-width: 34ch; }
+.split .img { border-radius: 18px; overflow: hidden; aspect-ratio: 4 / 3.3; }
+.btn-chip { padding-inline-end: 6px; }
+.btn-chip .chip-i { width: 32px; height: 32px; border-radius: 50%; background: var(--blush); display: grid; place-items: center; }
+.btn-chip .chip-i svg { width: 12px; height: 12px; }
+.facts-row { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+/* B. image + text rows (Nest services reference): case-study chapters, collection entries */
+.rows { display: grid; gap: var(--s-6); }
+.row-item { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--s-7); align-items: center; }
+.row-item .img { border-radius: 18px; overflow: hidden; aspect-ratio: 4 / 3; }
+.row-item .txt { display: grid; gap: var(--s-3); max-width: 46ch; }
+.row-item .txt .label { color: var(--plum); }
+.row-item h4 { font-family: var(--f-display); font-weight: 700; font-size: clamp(1.5rem, 2.6vw, 2.25rem); line-height: 1.05; letter-spacing: -0.02em; color: var(--plum); }
+/* C. mosaic wall (Project gallery reference): AI playground overview, screen galleries */
+.mosaic { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); grid-auto-rows: clamp(90px, 11vw, 170px); gap: 6px; margin-inline: calc(var(--gutter) * -1) calc(var(--gutter-end) * -1); }
+.mosaic > * { border-radius: 0; overflow: hidden; position: relative; }
+.mosaic img { width: 100%; height: 100%; object-fit: cover; }
+.mosaic .m1 { grid-column: span 2; grid-row: span 2; } .mosaic .m2 { grid-column: span 2; } .mosaic .m3 { grid-column: span 2; grid-row: span 2; }
+.mosaic .m4 { grid-column: span 2; } .mosaic .m5 { grid-column: span 3; } .mosaic .m6 { grid-column: span 3; }
+.mosaic .tag { position: absolute; inset-inline-start: 8px; bottom: 8px; font-family: var(--f-type); font-size: .75rem; background: var(--card); padding: 2px 8px; }
+.mosaic .placeholder { outline-offset: -6px; }
+.split .img > .placeholder, .row-item .img > .placeholder, .mosaic > * > .placeholder { height: 100%; }
+.mosaic .placeholder span { font-size: .75rem; }
+@media (max-width: 760px) {
+  .split, .row-item { grid-template-columns: 1fr; gap: var(--s-5); }
+  .mosaic { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-auto-rows: 120px; }
+  .mosaic > *:nth-child(n) { grid-column: span 1; grid-row: span 1; }
+  .mosaic .m1 { grid-column: span 2; grid-row: span 2; }
+}
 
 /* ---------- System panel ---------- */
 .sys { display: grid; gap: var(--s-8); }
@@ -302,6 +338,7 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--cursor); outlin
     <a href="#work">Work</a>
     <a href="#about">About</a>
     <a href="#contact">Contact</a>
+    <a href="#layouts">Layouts</a>
     <a href="#system">System</a>
   </div>
 </nav>
@@ -438,6 +475,50 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--cursor); outlin
   </div>
 </section>
 
+<!-- LAYOUT PATTERNS -->
+<section class="band cream" id="layouts" aria-labelledby="layouts-title">
+  <div class="inner">
+    <div class="head"><h2 id="layouts-title">Layouts from your references</h2><span class="label muted">used beyond the homepage</span></div>
+
+    <div class="pattern-note"><span>A · Case-study opener</span><span class="muted">from "Once upon a birthday"</span></div>
+    <div class="split">
+      <div class="copy">
+        <span class="label muted">Case study · MuniBox</span>
+        <h3>Project headline goes here</h3>
+        <p>One or two sentences on the problem and your part in solving it. <span class="draft">placeholder</span></p>
+        <div class="facts-row"><span class="pill">Role: pending</span><span class="pill">Team: pending</span><span class="pill">Mobile + admin</span></div>
+        <a class="btn btn-ghost btn-chip" href="#layouts">Jump to the solution <span class="chip-i"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M3 9l6-6M4 3h5v5" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span></a>
+      </div>
+      <div class="img"><div class="placeholder" style="--bgc:var(--sky)"><span>placeholder · hero screen pending</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="band sky" aria-label="Image and text rows">
+  <div class="inner">
+    <div class="pattern-note"><span>B · Story chapters</span><span>from the Nest "Installation / Removal" rows</span></div>
+    <div class="rows">
+      <div class="row-item"><div class="img"><div class="placeholder" style="--bgc:var(--card)"><span>placeholder · screen pending</span></div></div><div class="txt"><span class="label">01 · Context</span><h4>The problem</h4><p>Short paragraph per chapter, with one image that proves it. <span class="draft">placeholder</span></p></div></div>
+      <div class="row-item"><div class="img"><div class="placeholder" style="--bgc:var(--card)"><span>placeholder · screen pending</span></div></div><div class="txt"><span class="label">02 · Process</span><h4>What I tried</h4><p>Iterations, decisions and trade-offs, one per row. <span class="draft">placeholder</span></p></div></div>
+      <div class="row-item"><div class="img"><img src="kea-preview.webp" width="1400" height="988" alt="Three screens from kea, a skincare routine app" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div><div class="txt"><span class="label">03 · Result</span><h4>What shipped</h4><p>Real screens only. In the AI playground the same row becomes one experiment: image, name, what the AI did and what you did. <span class="draft">placeholder</span></p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="band blush" aria-label="Mosaic wall">
+  <div class="inner">
+    <div class="pattern-note"><span>C · The wall</span><span>from the Nest "Project gallery"</span></div>
+    <div class="mosaic">
+      <div class="m1"><img src="kea-preview.webp" width="1400" height="988" alt="kea app screens" loading="lazy"><span class="tag">kea</span></div>
+      <div class="m2"><div class="placeholder" style="--bgc:var(--butter)"><span>designers' calendar</span></div></div>
+      <div class="m3"><div class="placeholder" style="--bgc:var(--sky)"><span>Boost booth wall</span></div></div>
+      <div class="m4"><div class="placeholder" style="--bgc:var(--card)"><span>experiment</span></div></div>
+      <div class="m5"><div class="placeholder" style="--bgc:var(--sky)"><span>experiment</span></div></div>
+      <div class="m6"><div class="placeholder" style="--bgc:var(--butter)"><span>experiment</span></div></div>
+    </div>
+  </div>
+</section>
+
 <!-- SYSTEM -->
 <section class="band paper" id="system" aria-labelledby="sys-title">
   <div class="inner sys doc">
@@ -478,6 +559,15 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--cursor); outlin
           <li><b>Look and feel from v2</b>: your references are warm, so the base is paper, plum and strong pastels.</li>
           <li><b>Thinking layer from v1</b>: frame labels, selection handles and the cursor show this is a product designer's board, not a party invite.</li>
           <li><b>Restraint</b>: one torn edge (hero into work), one redline, one cursor. Other bands meet with straight edges.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Where your layouts go</h3>
+        <ul class="muted">
+          <li><b>Three cards in a row</b> (Explore styles): the homepage work grid. Clearer for recruiters than the staggered grid.</li>
+          <li><b>A · Split opener</b> (Birthday): the top of every case study. Title, summary, role pills, one big image. The soft pink glow is the one gradient on the site.</li>
+          <li><b>B · Image + text rows</b> (Nest): case-study chapters and AI playground entries. Stacks to one column on phones.</li>
+          <li><b>C · Mosaic wall</b> (Project gallery): the AI playground overview and screen galleries inside case studies.</li>
         </ul>
       </div>
       <div>
