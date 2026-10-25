@@ -4,7 +4,9 @@ Running list of decisions, open questions and next steps. Updated at each stage.
 
 ## Current stage
 
-**Stage 2 — Visual concept.** Tal asked me to decide the mix. Chosen concept: v3 "the playground board" at `design/visual-concept-v3.html`. v1 and v2 are kept for reference. Next: Stage 3 homepage.
+**Stage 3 — Homepage prototype.** Built in Next.js (`src/`). Waiting for Tal's review.
+
+Stage 2 done: concept v3 "the playground board" (`design/visual-concept-v3.html`).
 
 Stage 1 approved 2026-10-25.
 
@@ -53,6 +55,14 @@ Stage 1 approved 2026-10-25.
 - Two project types: `case-study` (A, B) and `collection` (C). A collection holds short entries, and any entry can later grow into a fuller write-up
 - Each AI-project entry records what the AI did and what Tal did
 - No analytics, no forms, and no CMS for now
+
+## Stage 3 notes (2026-10-25)
+
+- Next.js 16.4.3 with Cache Components and partial prefetching (scaffold defaults). Routes: `/` → `/en` (temporary redirect), `/en`, `/en/work/[slug]` (temporary "being written" pages so cards don't 404)
+- All copy lives in `src/content`; unapproved copy is `draft()` and renders a visible "Draft copy" tag
+- Contact links render as dashed "pending" pills, not links, until real URLs exist
+- Known issue for Stage 7: an unknown project URL shows the not-found page with `noindex` but returns HTTP 200 (streamed page behavior in this Next version). Fix with a custom 404 and a proper status
+- Not yet done: favicon and OG image, custom 404, Hebrew, case-study template
 
 ## Open questions
 

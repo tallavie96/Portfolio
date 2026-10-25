@@ -1,0 +1,144 @@
+.work {
+  background: var(--blush);
+}
+
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: end;
+  gap: var(--s-4);
+  margin-bottom: var(--s-7);
+}
+.head h2 {
+  font-family: var(--f-display);
+  font-weight: 750;
+  font-size: var(--t-h2);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--plum);
+  font-variation-settings: "wdth" 85;
+}
+
+.grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--s-6) var(--col-gap);
+}
+
+.cell {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 14px;
+}
+
+.frameLabel {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--s-3);
+  padding-inline: 4px;
+}
+
+.card {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: var(--s-3);
+  padding: 12px 12px 20px;
+  border-radius: var(--r-card);
+  background: var(--card);
+  text-decoration: none;
+  transition:
+    transform var(--t-ui) var(--ease),
+    box-shadow var(--t-ui) var(--ease);
+}
+.card:focus-visible {
+  outline: none;
+}
+.card:focus-visible .selection {
+  opacity: 1;
+}
+
+.art {
+  aspect-ratio: 4 / 3;
+  border-radius: var(--r-img);
+  overflow: hidden;
+  background: var(--paper);
+}
+.art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.meta {
+  display: grid;
+  gap: 4px;
+  align-content: start;
+  padding-inline: 8px;
+}
+.titleRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--s-3);
+}
+.titleRow h3 {
+  font-family: var(--f-display);
+  font-weight: 700;
+  font-size: 1.75rem;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--plum);
+}
+.number {
+  color: var(--ink-2);
+}
+.meta p {
+  font-size: var(--t-small);
+  color: var(--ink-2);
+}
+
+.tags {
+  list-style: none;
+  margin: 0;
+  padding: 0 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.tags li {
+  padding: 3px 10px;
+  border: 1px solid var(--plum);
+  border-radius: 999px;
+  color: var(--plum);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lift);
+  }
+  .card:hover .selection {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 760px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: var(--s-7);
+  }
+}
+
+/* Three narrow columns: keep the frame label to one line */
+@media (min-width: 761px) and (max-width: 1100px) {
+  .frameLabel span:last-child {
+    display: none;
+  }
+}

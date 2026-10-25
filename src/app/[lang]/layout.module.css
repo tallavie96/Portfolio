@@ -1,0 +1,17 @@
+.skip {
+  position: fixed;
+  z-index: 100;
+  top: calc(12px + env(safe-area-inset-top, 0px));
+  inset-inline-start: 12px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  background: var(--plum);
+  color: var(--paper);
+  font-weight: 600;
+  text-decoration: none;
+  transform: translateY(-200%);
+  transition: transform var(--t-fast) var(--ease);
+}
+.skip:focus-visible {
+  transform: none;
+}
