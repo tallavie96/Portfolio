@@ -20,7 +20,6 @@ export interface HomeProject {
   gallery: HomeImage[];
   phones: HomeImage[];
   desktop: HomeImage | null;
-  heroPhoto: HomeImage | null;
 }
 
 export function getHomeProjects(lang: Locale): HomeProject[] {
@@ -36,6 +35,5 @@ export function getHomeProjects(lang: Locale): HomeProject[] {
     gallery: p.gallery,
     phones: p.phones,
     desktop: p.desktop,
-    heroPhoto: p.heroPhoto ?? null,
   }));
 }

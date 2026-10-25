@@ -12,7 +12,6 @@ import muniboxManage from "@/assets/images/munibox-manage.webp";
 import hertzDashboard from "@/assets/images/hertz-dashboard.webp";
 import hertzOrders from "@/assets/images/hertz-orders.webp";
 import hertzStats from "@/assets/images/hertz-stats.webp";
-import keaLifestyle from "@/assets/images/kea-lifestyle.webp";
 import boostWall1 from "@/assets/images/boost-wall-1.webp";
 import boostWall2 from "@/assets/images/boost-wall-2.webp";
 import keaProducts from "@/assets/images/kea-products.webp";
@@ -32,8 +31,6 @@ interface ProjectBase {
   phones: { src: StaticImageData; alt: string }[];
   /** Desktop screen shown in a browser frame (portals, dashboards). */
   desktop: { src: StaticImageData; alt: string } | null;
-  /** Full-bleed photo for the homepage slide, used instead of screens when set. */
-  heroPhoto?: { src: StaticImageData; alt: string };
 }
 
 interface ProjectText {
@@ -91,10 +88,6 @@ const base: ProjectBase[] = [
     type: "collection",
     cover: keaCover,
     desktop: null,
-    heroPhoto: {
-      src: keaLifestyle,
-      alt: "A woman applying serum in front of a bathroom mirror, skincare products on the sink",
-    },
     gallery: [
       { src: keaOnboarding, alt: "kea onboarding screen: search or photograph your products to build a routine" },
       { src: keaProducts, alt: "kea product list grouped by step, with ingredients and a retinol warning" },
