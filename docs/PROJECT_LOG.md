@@ -25,6 +25,7 @@ Stage 1 approved 2026-10-25.
   - **C — AI playground**: a collection of smaller AI projects (kea, designers calendar, Boost booth wall design, and others). Screens can be public
 - About is a homepage section, not a separate page
 - Default language at `/` is English
+- Hebrew paused (2026-10-25): keep the RTL-ready structure, but no Hebrew copy or Hebrew polish until Tal resumes it
 
 ## Stage 2 proposal (awaiting approval)
 
@@ -48,6 +49,8 @@ Stage 1 approved 2026-10-25.
 - No analytics, no forms, and no CMS for now
 
 ## Open questions
+
+- Visual references: two Canva templates (EAFSuph-1oU, EAG16xRZiVM). They can't be opened from this environment; waiting for screenshots or a shared design link
 
 See the Stage 1 questions in the chat. Answers get recorded here.
 
