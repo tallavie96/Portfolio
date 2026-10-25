@@ -1,13 +1,12 @@
 /* Design tokens. Calm editorial base, three soft accents used sparingly. Light theme only. */
 :root {
   /* Neutrals */
-  --canvas: #faf8f5; /* light neutral page */
-  --surface: #ffffff; /* image frames, toolbar */
+  --canvas: #f7f3ec; /* warm off-white page */
+  --surface: #fffdf9; /* image frames, toolbar */
   --ink: #26201f; /* text */
   --ink-2: #5f5754; /* secondary text, on canvas and surface only */
-  --line: #e7e2da; /* rules and borders */
-  --wall: #f2efe9; /* quiet backdrop behind project images */
-  --dot: rgb(38 32 31 / 0.1); /* dotted pattern, used sparingly */
+  --line: #e3dbcf; /* rules and borders */
+  --dot: rgb(38 32 31 / 0.11); /* dotted canvas */
 
   /* The three accents: tags, highlights, image backgrounds. Text on them is always ink. */
   --blush: #f5c6d3;

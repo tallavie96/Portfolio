@@ -21,7 +21,10 @@ body {
   font-size: var(--t-body);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  /* the dotted canvas: one background for the whole site */
   background-color: var(--canvas);
+  background-image: radial-gradient(circle, var(--dot) 1px, transparent 1.4px);
+  background-size: 24px 24px;
 }
 
 h1,
@@ -90,22 +93,6 @@ img {
 .section-head .meta {
   color: var(--ink-2);
   font-size: var(--t-small);
-}
-
-/* Faint dotted field that fades out downward. Use sparingly, as a signature. */
-.dotted-fade {
-  position: relative;
-  isolation: isolate;
-}
-.dotted-fade::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background-image: radial-gradient(circle, var(--dot) 1px, transparent 1.4px);
-  background-size: 24px 24px;
-  mask-image: linear-gradient(to bottom, #000 0%, transparent 85%);
-  pointer-events: none;
 }
 
 .visually-hidden {

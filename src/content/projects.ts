@@ -28,8 +28,8 @@ export type Project = ProjectBase & ProjectText;
 
 const base: ProjectBase[] = [
   { slug: "munibox", number: "01", type: "case-study", color: "sky", cover: null, galleryImage: null },
-  { slug: "ai-playground", number: "02", type: "collection", color: "blush", cover: keaCover, galleryImage: keaLarge },
-  { slug: "hertz-portal", number: "03", type: "case-study", color: "butter", cover: null, galleryImage: null },
+  { slug: "hertz-portal", number: "02", type: "case-study", color: "butter", cover: null, galleryImage: null },
+  { slug: "ai-playground", number: "03", type: "collection", color: "blush", cover: keaCover, galleryImage: keaLarge },
 ];
 
 const text: Partial<Record<Locale, Record<string, ProjectText>>> = {

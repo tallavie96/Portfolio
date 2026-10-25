@@ -9,7 +9,7 @@ import styles from "./Hero.module.css";
 export function Hero({ dict }: { dict: Dictionary }) {
   const { hero, common } = dict;
   return (
-    <section className={`section dotted-fade ${styles.hero}`} id="top" aria-labelledby="hero-name">
+    <section className={`section ${styles.hero}`} id="top" aria-labelledby="hero-name">
       <div className={`inner ${styles.layout}`}>
         <div className={styles.text}>
           <Marker color="sky">{hero.role}</Marker>

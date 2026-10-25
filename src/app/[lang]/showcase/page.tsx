@@ -18,24 +18,31 @@ export async function generateMetadata({ params }: PageProps<"/[lang]/showcase">
   return { title: getDictionary(lang).showcase.metaTitle, robots: { index: false, follow: false } };
 }
 
+/** Order on this homepage: professional project A, the personal project, professional project B. */
+const showcaseOrder = ["munibox", "ai-playground", "hertz-portal"];
+
 export default async function ShowcasePage({ params }: PageProps<"/[lang]/showcase">) {
   const { lang } = await params;
   if (!isEnabledLocale(lang)) notFound();
   const dict = getDictionary(lang);
   const { showcase, hero, contact } = dict;
 
-  const projects: ShowcaseProject[] = getProjects(lang).map((p) => ({
-    slug: p.slug,
-    number: p.number,
-    title: p.title,
-    descriptor: p.kindLabel,
-    details: p.tags,
-    summary: { text: p.summary.text, draft: p.summary.status === "draft" },
-    color: p.color,
-    image: p.galleryImage,
-    alt: p.coverAlt ?? "",
-    href: `/${lang}/work/${p.slug}`,
-  }));
+  const all = getProjects(lang);
+  const projects: ShowcaseProject[] = showcaseOrder
+    .map((slug) => all.find((p) => p.slug === slug))
+    .filter((p) => p !== undefined)
+    .map((p, i) => ({
+      slug: p.slug,
+      number: String(i + 1).padStart(2, "0"),
+      title: p.title,
+      descriptor: p.kindLabel,
+      details: p.tags,
+      summary: { text: p.summary.text, draft: p.summary.status === "draft" },
+      color: p.color,
+      image: p.galleryImage,
+      alt: p.coverAlt ?? "",
+      href: `/${lang}/work/${p.slug}`,
+    }));
 
   return (
     <div className={styles.page}>

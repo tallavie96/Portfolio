@@ -1,5 +1,10 @@
-/* Fits the viewport on desktop: header, showcase, one-line footer. */
+/* Fits the viewport on desktop: header, showcase, one-line footer.
+   This homepage uses a lighter, quieter canvas than the rest of the site. */
 .page {
+  --canvas: #faf8f5;
+  --surface: #ffffff;
+  --line: #e7e2da;
+  --wall: #f2efe9;
   display: grid;
   grid-template-rows: auto minmax(0, 1fr) auto;
   height: 100dvh;

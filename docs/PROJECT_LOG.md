@@ -75,8 +75,8 @@ Supersedes the v3 "playground board" styling. Information architecture, content 
 - Navigation: arrow buttons, ←/→ keys (flipped in RTL), touch/pen swipe (direction-aware), index buttons, `#slug` in the URL; loops around. Image slides 6% from the travel direction and fades over ~0.6s; caption swaps with a short fade
 - Phone: normal page flow, image first, counter + arrows directly under it, caption below
 - Accessibility: carousel/slide roles, live "Project n of 3" status, inactive slides hidden from assistive tech and tab order; reduced motion = fade only
-- Project order changed to Tal's list: 01 MuniBox, 02 AI playground (kea), 03 Hertz portal (affects all pages and previous/next)
-- Site-wide: page background lightened to #FAF8F5; dotted pattern removed from the page background and kept only as faint accents (homepage hero fade, gallery intro, showcase image wall). Plum and Bricolage were already removed earlier
+- Homepage only (Tal clarified the requests were about the homepage): project order 01 MuniBox, 02 AI playground (kea), 03 Hertz portal; lighter canvas #FAF8F5 and dots only as a faint texture on the image wall. Rest of the site keeps the warm dotted canvas and the original order (MuniBox, Hertz, AI playground), including case-study previous / next
+- Plum and Bricolage were already removed earlier
 
 ## Alternative homepage: gallery concept (2026-10-25, for comparison)
 
