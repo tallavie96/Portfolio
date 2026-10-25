@@ -190,8 +190,6 @@
   height: 100%;
   border-radius: 4px;
   background-color: var(--wall);
-  background-image: radial-gradient(circle, var(--dot) 1px, transparent 1.4px);
-  background-size: 22px 22px;
   touch-action: pan-y;
 }
 .slide {
@@ -239,7 +237,7 @@
   place-items: center;
   width: min(100%, 560px);
   aspect-ratio: 4 / 3;
-  background: var(--surface);
+  border: 1px dashed #c9c9c9;
   color: var(--ink-2);
   font-size: var(--t-label);
   letter-spacing: 0.02em;
