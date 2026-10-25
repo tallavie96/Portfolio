@@ -4,7 +4,9 @@ Running list of decisions, open questions and next steps. Updated at each stage.
 
 ## Current stage
 
-**Stage 1 — Discovery and technical plan.** Questions answered. Waiting for go-ahead on Stage 2.
+**Stage 2 — Visual concept.** Preview at `design/visual-concept.html` (also published as a private claude.ai artifact). Waiting for Tal's feedback.
+
+Stage 1 approved 2026-10-25.
 
 ## Asset inventory (repo root, uploaded in `f030356`)
 
@@ -24,7 +26,17 @@ Running list of decisions, open questions and next steps. Updated at each stage.
 - About is a homepage section, not a separate page
 - Default language at `/` is English
 
-## Proposed decisions (not yet approved)
+## Stage 2 proposal (awaiting approval)
+
+- Concept "the working canvas": cool grey canvas, white frames, tool-style frame labels, selection box (corner handles) as the shared hover and focus state, collaborator cursor in the hero
+- Palette: canvas #EFEEF3, frame #FFFFFF, ink #1C1B22, ink-2 #5D5A69, line #D6D3DE, select #5A45E0, redline #E0457B; pastels lilac #DCD3FB, blush #F8D3DE, sky #CFE3F6, butter #F7E7A6 (surfaces only). All text pairs pass WCAG AA
+- Project colors: MuniBox sky, Hertz butter, AI playground lilac (+ blush)
+- Type: Fraunces (Latin) + Frank Ruhl Libre (Hebrew) display; IBM Plex Sans + Plex Sans Hebrew text; Plex Mono labels. Hebrew glyph coverage verified from the font files (letters, finals, maqaf, geresh/gershayim, ₪, niqqud)
+- Grid 12 / 8 / 4 columns, max width 1360px, margins 16–56px, 4px spacing scale
+- Navigation: floating toolbar at bottom center on every screen size
+- Motion: one easing curve, 140 / 240 / 560ms; zoom-into-frame page transition; scrollytelling only in case studies
+
+## Proposed decisions (Stage 1, approved)
 
 - Stack: Next.js (App Router) + TypeScript, deployed to Vercel (Hobby tier, free)
 - Styling: CSS Modules + CSS custom-property design tokens, using logical properties for RTL
@@ -40,6 +52,8 @@ Running list of decisions, open questions and next steps. Updated at each stage.
 See the Stage 1 questions in the chat. Answers get recorded here.
 
 ## Missing information
+
+- How Tal wants to be addressed in Hebrew copy (gendered forms); Hebrew spelling of the surname (draft uses טל לביא)
 
 - Screens and materials for MuniBox, Hertz portal, designers calendar, Boost booth wall
 - Full list of AI-playground projects, and which tools were used in each
