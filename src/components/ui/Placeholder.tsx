@@ -1,9 +1,9 @@
-import type { CSSProperties } from "react";
 import styles from "./ui.module.css";
 
-export function Placeholder({ label, color = "sky" }: { label: string; color?: string }) {
+/** Stand-in for a missing image. Clearly labelled, never a fake screen. */
+export function Placeholder({ label }: { label: string }) {
   return (
-    <div className={styles.placeholder} style={{ "--ph-bg": `var(--${color})` } as CSSProperties}>
+    <div className={styles.placeholder}>
       <span>{label}</span>
     </div>
   );

@@ -22,9 +22,6 @@ export const en = {
     facts: approved("Shenkar, Visual Communication, 2023"),
     ctaWork: "See selected work",
     ctaContact: "Get in touch",
-    featuredCaption: "kea, from the AI playground",
-    featuredAlt:
-      "Three screens from kea, a skincare routine app: onboarding, product list, and morning and evening routine",
     portraitAlt: "Tal Lavie sitting on the grass in a park, smiling and looking to the side",
   },
   work: {
@@ -45,7 +42,7 @@ export const en = {
     ],
   },
   contact: {
-    title: "Let's make something.",
+    title: "Contact",
     note: "Email, LinkedIn and CV go here once Tal sends them. None of these are links yet.",
     links: [
       { label: "Email", href: null },
@@ -53,29 +50,6 @@ export const en = {
       { label: "CV (PDF)", href: null },
     ] as { label: string; href: string | null }[],
     pending: "pending",
-  },
-  gallery: {
-    metaTitle: "Gallery concept",
-    nav: { work: "Work", contact: "Contact" },
-    intro: draft(
-      "I design mobile apps, dashboards and small AI experiments. Visual Communication, Shenkar, 2023.",
-    ),
-    imagePending: "Image pending",
-    view: "View project",
-    contactTitle: "Contact",
-    contactNote: "Links will be added once they're ready.",
-  },
-  showcase: {
-    metaTitle: "Showcase concept",
-    nav: { about: "About", contact: "Contact" },
-    carouselLabel: "Selected projects",
-    indexLabel: "All projects",
-    previous: "Previous project",
-    next: "Next project",
-    view: "View project",
-    imagePending: "Image pending",
-    status: "Project {n} of {total}: {title}",
-    hint: "Arrow keys or swipe to browse",
   },
   caseStudy: {
     eyebrow: "Case study",
@@ -91,7 +65,7 @@ export const en = {
   common: {
     draft: "Draft copy",
     placeholder: "Placeholder",
-    screensPending: "placeholder · screens pending",
+    screensPending: "Placeholder: screens pending",
     backToTop: "Back to top",
   },
 };

@@ -2,7 +2,7 @@
 
 Product design portfolio built with Next.js (App Router), TypeScript and CSS Modules.
 
-Status: **Stage 3, homepage prototype.** Copy marked "Draft copy" and hatched "placeholder" images are not final.
+Status: **design reset.** The pages are an unstyled content skeleton while a new visual direction is chosen. Copy marked "Draft copy" and "Placeholder" images are not final.
 
 ## Run it locally
 
@@ -28,20 +28,14 @@ npm start          # serve the production build
 | English copy (homepage, nav, contact) | `src/content/dictionaries/en.ts` |
 | Projects (titles, summaries, tags, cover images) | `src/content/projects.ts` |
 | Images | `src/assets/images/` (imported, so Next sizes and optimizes them) |
-| Design tokens (colors, type, spacing, motion) | `src/styles/tokens.css` |
-| Fonts (Frank Ruhl Libre headings, IBM Plex Sans + Plex Sans Hebrew text) | `src/styles/fonts.ts` |
+| Base styles (reset only for now) | `src/styles/globals.css` |
 | Languages and text direction | `src/i18n/config.ts` |
 | Pages | `src/app/[lang]/` |
-| Visual concept previews (Stage 2) | `design/` |
 | Decisions, open questions, missing info | `docs/PROJECT_LOG.md` |
 
 ### Editing copy
 
 Each paragraph that still needs approval is written as `draft("...")` and shows a "Draft copy" tag on the site. When the text is final, change it to `approved("...")` and the tag disappears.
-
-### Scroll reveals
-
-Add `data-reveal` to an element to fade it in as it scrolls into view (optionally `style={{ "--reveal-i": n }}` to stagger). Elements already on screen at load are shown immediately, and reduced-motion users see no movement.
 
 ### Adding a project cover
 
@@ -49,7 +43,7 @@ Put the image in `src/assets/images/`, import it in `src/content/projects.ts` an
 
 ### Hebrew
 
-The layout is direction-aware (`dir` on `<html>`, logical CSS properties). Hebrew is paused: to turn it on, add a Hebrew dictionary and project text, and add `"he"` to `enabledLocales`. The fonts already include Hebrew.
+Pages set `dir` on `<html>`. Hebrew is paused: to turn it on, add a Hebrew dictionary and project text, and add `"he"` to `enabledLocales`. Whatever fonts the new design uses need Hebrew glyphs.
 
 ## Deploying
 

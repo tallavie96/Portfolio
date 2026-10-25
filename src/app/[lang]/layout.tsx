@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { direction, enabledLocales, isEnabledLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
-import { bodyFont, bodyHebrewFont, headingFont } from "@/styles/fonts";
 import "@/styles/globals.css";
 import styles from "./layout.module.css";
 
@@ -26,11 +25,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
   const dict = getDictionary(lang);
 
   return (
-    <html
-      lang={lang}
-      dir={direction[lang]}
-      className={`${headingFont.variable} ${bodyFont.variable} ${bodyHebrewFont.variable}`}
-    >
+    <html lang={lang} dir={direction[lang]}>
       <body>
         <a className={styles.skip} href="#main">
           {dict.skipLink}

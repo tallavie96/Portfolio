@@ -4,9 +4,9 @@ Running list of decisions, open questions and next steps. Updated at each stage.
 
 ## Current stage
 
-**Stage 3 — Homepage prototype.** Built in Next.js (`src/`). Waiting for Tal's review.
+**Design reset (2026-10-25).** Tal didn't like any of the visual directions, so the whole design layer was removed and the visual design starts from scratch. The site is now an unstyled content skeleton on top of the working plumbing.
 
-Stage 2 done: concept v3 "the playground board" (`design/visual-concept-v3.html`).
+Next: Tal shares 2–3 real portfolio sites they love (with a line on what they like in each); Claude makes 3 clearly different one-screen directions side by side using real kea screens; Tal picks one. In parallel: MuniBox and Hertz screens.
 
 Stage 1 approved 2026-10-25.
 
@@ -29,22 +29,6 @@ Stage 1 approved 2026-10-25.
 - Default language at `/` is English
 - Hebrew paused (2026-10-25): keep the RTL-ready structure, but no Hebrew copy or Hebrew polish until Tal resumes it
 
-## Stage 2 decision: v3 "the playground board" (Tal delegated the choice, 2026-10-25)
-
-- Idea: a FigJam-style board where scrapbook pieces and design-tool details live together
-- From v2: warm paper #F6F0E6, card #FFFDF9, ink #2B1D22, plum #5E1A36, ink-2 #6A5A60 (paper/card only), blush #F5B8CC, sky #B9DAF3, butter #F2DC85; full-width color bands; collage hero (taped kea screens, portrait cut-out, sticky note, stamp); pill buttons; rounded photos
-- From v1: dot-grid canvas in the hero, typewriter frame labels above project cards, selection handles on hover and keyboard focus, "Tal" collaborator cursor (#5A45E0), one redline
-- Restraint: one torn edge (hero into work); other bands meet straight
-- Type: Bricolage Grotesque (display, width axis), IBM Plex Sans (body), Courier Prime (labels, notes). Neither Bricolage nor Courier Prime has Hebrew; partners needed when Hebrew resumes
-- Hover on projects: lift + straighten + selection box. Touch: no hover effects. Reduced motion: no movement
-- Toolbar: cream pill, plum border, bottom center
-- Layouts from Tal's extra references (2026-10-25):
-  - Homepage work grid: three equal cards in one row (from "Explore styles"), replacing the staggered grid
-  - A · Case-study opener: split layout, text + role pills + chip button left, large rounded image right, one soft pink glow (from the birthday hero). The only gradient on the site
-  - B · Story chapters: image + text rows (from Nest "Installation / Removal"). Also used for AI playground entries
-  - C · Mosaic wall: tight edge-to-edge mosaic (from Nest "Project gallery"). AI playground overview and in-case-study screen galleries
-- Portrait used via `design/portrait-preview.webp` (resized, EXIF/GPS stripped). Original `IMG_2491.jpeg` still has GPS data
-
 ## Proposed decisions (Stage 1, approved)
 
 - Stack: Next.js (App Router) + TypeScript, deployed to Vercel (Hobby tier, free)
@@ -56,45 +40,21 @@ Stage 1 approved 2026-10-25.
 - Each AI-project entry records what the AI did and what Tal did
 - No analytics, no forms, and no CMS for now
 
-## Stage 3 refinement: calmer direction (Tal's feedback, 2026-10-25)
+## What the reset kept (plumbing)
 
-Supersedes the v3 "playground board" styling. Information architecture, content and routes unchanged.
+- Next.js 16.4.3 + TypeScript + CSS Modules, Cache Components and partial prefetching
+- Routes: `/` → `/en` (temporary redirect), `/en` (homepage skeleton), `/en/work/[slug]` (case-study skeleton with previous / next project links, looping). Unknown locales 404
+- i18n: locale-prefixed routes, `dir` on `<html>`, typed dictionaries in `src/content/dictionaries`, Hebrew paused but RTL-ready
+- Content: `src/content/projects.ts` (order MuniBox, Hertz portal, AI playground) and the English dictionary; unapproved copy is `draft()` and shows a "Draft copy" tag; missing images use a labelled placeholder
+- Assets: `src/assets/images/kea.webp` (full-resolution web copy of `kea.png`), `portrait.webp` (resized, GPS data removed)
+- Accessibility basics: skip link, semantic sections, focus outline, reduced-motion-aware smooth scrolling
+- Known issue: an unknown project URL shows the not-found page with `noindex` but returns HTTP 200 (streamed page behaviour in this Next version); fix with a custom 404 later
 
-- Removed: tape, sticky note, stamp, polaroid hero portrait, collaborator cursor, redline, torn edge, selection handles, tilted cards and hover lift, typewriter labels, full-width color sections, plum and violet accents, Bricolage Grotesque and Courier Prime
-- Kept: dotted background (now the single canvas for the whole site), marker-style tags (role label in the hero, "Draft copy" markers), floating bottom navigation (simplified)
-- Palette: canvas #F7F3EC, surface #FFFDF9, ink #26201F, ink-2 #5F5754, line #E3DBCF; accents only blush #F5C6D3, sky #C4DEF3, butter #F3E19A, used for markers, tag dots, image backgrounds and one highlight under the contact heading
-- Type: Frank Ruhl Libre (headings, Latin + Hebrew) and IBM Plex Sans + IBM Plex Sans Hebrew (body). Scale: h1 44–76px, h2 30–42px, h3 24px, lead 18–21px, body 17px
-- Hero: role marker, name, one line, facts, two buttons, one featured image (kea). Cards: image, number + type, title, summary, tags with accent dots; hover = title underline
-- Motion: scroll reveals (fade + 18px rise, 700ms, staggered 90ms) via `RevealObserver`; nothing hidden without JS; none with reduced motion. No cursor effects
-- Case-study placeholder page: same split layout, glow removed
+## What the reset removed
 
-## Homepage concept: interactive showcase (2026-10-25, awaiting approval)
+All visual design: design tokens, fonts, the concept previews in `design/`, the styled homepage, the gallery (`/en/gallery`) and showcase (`/en/showcase`) concepts, the floating toolbar, scroll reveals, marker styles and accent colours. Everything remains in git history (last styled commit: `61f27ea`).
 
-- Route `/en/showcase`, isolated, `noindex`. Chosen interaction: Option A, one project per screen with previous/next, plus a clickable title index
-- Desktop fits the viewport (tested 1440×900, 1280×720): header (name, role, intro, About / Contact), caption column (counter `01 / 03`, marker descriptor, title, summary, tags, "View project", arrow buttons, index, hint), large image wall, one-line contact footer
-- Navigation: arrow buttons, ←/→ keys (flipped in RTL), touch/pen swipe (direction-aware), index buttons, `#slug` in the URL; loops around. Image slides 6% from the travel direction and fades over ~0.6s; caption swaps with a short fade
-- Phone: normal page flow, image first, counter + arrows directly under it, caption below
-- Accessibility: carousel/slide roles, live "Project n of 3" status, inactive slides hidden from assistive tech and tab order; reduced motion = fade only
-- Homepage only (Tal clarified the requests were about the homepage): project order 01 MuniBox, 02 AI playground (kea), 03 Hertz portal; white canvas with its own neutral palette (ink #161616, ink-2 #616161, line #E8E8E8, image wall #F4F4F4), no dotted texture; treated as a new concept, independent of the earlier warm look. Rest of the site keeps the warm dotted canvas and the original order (MuniBox, Hertz, AI playground), including case-study previous / next
-- Plum and Bricolage were already removed earlier
-
-## Alternative homepage: gallery concept (2026-10-25, for comparison)
-
-- Route `/en/gallery`, not linked from the main homepage, `noindex`. Main homepage `/en` unchanged
-- Photography-portfolio feel: quiet header (name, role, Work / Contact), two-line intro on a faint dotted field that fades out, three plates with different proportions (MuniBox 4:5, Hertz 5:4 aligned low, AI playground full-bleed at the image's natural ratio), minimal captions (number, title, tags), long gaps between plates, footer with contact links
-- Real imagery: only kea (`src/assets/images/kea-large.webp`, from `kea.png`). MuniBox and Hertz show neutral "Image pending" plates
-- Hover: slow 2.5% image zoom and title underline. Reveal: fade-up with the image settling from a slight zoom
-- Phone: MuniBox runs edge to edge, Hertz sits inset from the start edge, AI playground full width; captions stack
-- Case-study pages: added previous / next project navigation (wraps around). The rest of the case-study page is unchanged
-- Preview: static snapshot published as a private artifact (project links go to snapshot copies of the placeholder case-study pages)
-
-## Stage 3 notes (2026-10-25)
-
-- Next.js 16.4.3 with Cache Components and partial prefetching (scaffold defaults). Routes: `/` → `/en` (temporary redirect), `/en`, `/en/work/[slug]` (temporary "being written" pages so cards don't 404)
-- All copy lives in `src/content`; unapproved copy is `draft()` and renders a visible "Draft copy" tag
-- Contact links render as dashed "pending" pills, not links, until real URLs exist
-- Known issue for Stage 7: an unknown project URL shows the not-found page with `noindex` but returns HTTP 200 (streamed page behavior in this Next version). Fix with a custom 404 and a proper status
-- Not yet done: favicon and OG image, custom 404, Hebrew, case-study template
+Directions tried and rejected, for reference: "working canvas" (grey canvas, selection boxes), scrapbook / playground board (warm paper, collage, colour bands), calm editorial (serif headings, dotted canvas), photography gallery (large plates, scrolling), interactive showcase (one project per screen, white).
 
 ## Open questions
 
