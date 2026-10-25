@@ -14,6 +14,7 @@ import hertzOrders from "@/assets/images/hertz-orders.webp";
 import hertzStats from "@/assets/images/hertz-stats.webp";
 import hertzLandscape from "@/assets/images/hertz-landscape.webp";
 import boostBooth from "@/assets/images/boost-booth.webp";
+import muniboxInHand from "@/assets/images/munibox-in-hand.webp";
 import boostWall1 from "@/assets/images/boost-wall-1.webp";
 import boostWall2 from "@/assets/images/boost-wall-2.webp";
 import keaProducts from "@/assets/images/kea-products.webp";
@@ -55,6 +56,12 @@ const base: ProjectBase[] = [
     cover: null,
     gallery: [],
     desktop: null,
+    heroPhoto: {
+      src: muniboxInHand,
+      alt: "A hand holding a phone showing the MuniBox bill-sharing screen, in a sunlit living room",
+      position: "50% 40%",
+      mobilePosition: "50% 50%",
+    },
     phones: [
       {
         src: muniboxShare,
