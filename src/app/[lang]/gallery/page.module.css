@@ -1,0 +1,292 @@
+/* Gallery concept: neutral page, the work carries the colour. */
+.page {
+  background: var(--canvas);
+  min-height: 100vh;
+}
+
+/* ----- Header: quiet, almost invisible ----- */
+.header {
+  padding-left: var(--gutter-start);
+  padding-right: var(--gutter-end);
+}
+.bar {
+  max-width: var(--content-max);
+  margin-inline: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s-2) var(--s-4);
+  padding-block: var(--s-6);
+}
+.name {
+  font-family: var(--f-heading);
+  font-size: 1.25rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+.role {
+  color: var(--ink-2);
+  font-size: var(--t-small);
+}
+.nav {
+  display: flex;
+  gap: var(--s-5);
+  margin-inline-start: auto;
+  font-size: var(--t-small);
+}
+.nav a {
+  color: var(--ink-2);
+  text-decoration: none;
+  transition: color var(--t-fast) var(--ease);
+}
+.nav a:hover {
+  color: var(--ink);
+}
+
+/* ----- Intro: two lines on a faint dotted field that fades out ----- */
+.intro {
+  position: relative;
+  padding-left: var(--gutter-start);
+  padding-right: var(--gutter-end);
+  padding-block: var(--s-9) var(--s-10);
+}
+.intro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--dot) 1px, transparent 1.4px);
+  background-size: 24px 24px;
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 90%);
+  pointer-events: none;
+}
+.introText {
+  position: relative;
+  max-width: var(--content-max);
+  margin-inline: auto;
+  font-family: var(--f-heading);
+  font-size: clamp(1.5rem, 2.6vw, 2.125rem);
+  line-height: 1.35;
+}
+.introText {
+  /* keep the line length short, inside the wide container */
+  padding-inline-end: max(0px, calc(100% - 30ch));
+}
+
+/* ----- Gallery ----- */
+.gallery {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  padding-left: var(--gutter-start);
+  padding-right: var(--gutter-end);
+  max-width: calc(var(--content-max) + 2 * clamp(20px, 5vw, 64px));
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--col-gap);
+  row-gap: clamp(96px, 14vw, 200px);
+}
+
+.plate {
+  min-width: 0;
+}
+.a {
+  grid-column: 1 / span 7;
+}
+.b {
+  grid-column: 9 / span 4;
+  align-self: end;
+}
+/* full-bleed plate that breaks out of the page grid */
+.c {
+  grid-column: 1 / -1;
+  margin-inline: calc(50% - 50vw);
+}
+.c .caption {
+  max-width: var(--content-max);
+  margin-inline: auto;
+  padding-left: var(--gutter-start);
+  padding-right: var(--gutter-end);
+  box-sizing: content-box;
+}
+
+.link {
+  display: block;
+  text-decoration: none;
+}
+
+.image {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface);
+}
+.image img {
+  object-fit: cover;
+  transition: transform 1.4s var(--ease);
+}
+
+/* Placeholder until real screens arrive: neutral, clearly labelled */
+.pending {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: #ede6da;
+}
+.pending span {
+  color: var(--ink-2);
+  font-size: var(--t-label);
+  letter-spacing: 0.02em;
+}
+
+.caption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s-1) var(--s-4);
+  padding-top: var(--s-4);
+}
+.index {
+  color: var(--ink-2);
+  font-size: var(--t-label);
+  font-variant-numeric: tabular-nums;
+}
+.title {
+  font-family: var(--f-heading);
+  font-size: 1.375rem;
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration-line: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  transition: text-decoration-color var(--t-fast) var(--ease);
+}
+.label {
+  margin-inline-start: auto;
+  color: var(--ink-2);
+  font-size: var(--t-label);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .link:hover .image img {
+    transform: scale(1.025);
+  }
+  .link:hover .title {
+    text-decoration-color: currentColor;
+  }
+}
+.link:focus-visible {
+  outline: none;
+}
+.link:focus-visible .image {
+  outline: 2px solid var(--ink);
+  outline-offset: 6px;
+}
+
+/* Reveal: plates fade up and the image settles from a slight zoom */
+:global(.reveal-ready) [data-reveal="plate"]:not([data-revealed]) .image img {
+  transform: scale(1.06);
+}
+:global(.reveal-ready) [data-reveal="plate"] {
+  transition-duration: 1000ms;
+}
+
+/* ----- Footer ----- */
+.footer {
+  padding-left: var(--gutter-start);
+  padding-right: var(--gutter-end);
+  padding-block: clamp(120px, 16vw, 220px) var(--s-7);
+}
+.footerInner {
+  max-width: var(--content-max);
+  margin-inline: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s-3) var(--s-6);
+  padding-top: var(--s-5);
+  border-top: 1px solid var(--line);
+}
+.footerTitle {
+  font-size: 1.25rem;
+}
+.links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2) var(--s-5);
+  font-size: var(--t-small);
+}
+.links a {
+  text-underline-offset: 0.2em;
+}
+/* Not a link yet: dashed underline, muted */
+.footer .pending {
+  position: static;
+  display: inline;
+  background: none;
+  color: var(--ink-2);
+  text-decoration: underline dashed;
+  text-underline-offset: 0.25em;
+}
+.footer .pending small {
+  font-size: var(--t-label);
+}
+.footerNote {
+  margin-inline-start: auto;
+  color: var(--ink-2);
+  font-size: var(--t-label);
+}
+
+/* ----- Tablet ----- */
+@media (max-width: 1100px) {
+  .a {
+    grid-column: 1 / span 7;
+  }
+  .b {
+    grid-column: 8 / span 5;
+  }
+}
+
+/* ----- Phone: a sequence, not a shrunken grid ----- */
+@media (max-width: 760px) {
+  .bar {
+    padding-block: var(--s-5);
+  }
+  .nav {
+    gap: var(--s-4);
+  }
+  .intro {
+    padding-block: var(--s-7) var(--s-8);
+  }
+  .gallery {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: var(--s-9);
+  }
+  .a,
+  .b,
+  .c {
+    grid-column: 1 / -1;
+  }
+  /* first plate runs edge to edge */
+  .a {
+    margin-inline: calc(-1 * var(--gutter-start)) calc(-1 * var(--gutter-end));
+  }
+  .a .caption {
+    padding-inline: var(--gutter-start) var(--gutter-end);
+  }
+  /* second plate sits inset, offset from the start edge */
+  .b {
+    margin-inline-start: 14%;
+  }
+  .label {
+    flex-basis: 100%;
+    margin-inline-start: 0;
+  }
+  .footerNote {
+    margin-inline-start: 0;
+    flex-basis: 100%;
+  }
+}

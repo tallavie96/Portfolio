@@ -68,6 +68,16 @@ Supersedes the v3 "playground board" styling. Information architecture, content 
 - Motion: scroll reveals (fade + 18px rise, 700ms, staggered 90ms) via `RevealObserver`; nothing hidden without JS; none with reduced motion. No cursor effects
 - Case-study placeholder page: same split layout, glow removed
 
+## Alternative homepage: gallery concept (2026-10-25, for comparison)
+
+- Route `/en/gallery`, not linked from the main homepage, `noindex`. Main homepage `/en` unchanged
+- Photography-portfolio feel: quiet header (name, role, Work / Contact), two-line intro on a faint dotted field that fades out, three plates with different proportions (MuniBox 4:5, Hertz 5:4 aligned low, AI playground full-bleed at the image's natural ratio), minimal captions (number, title, tags), long gaps between plates, footer with contact links
+- Real imagery: only kea (`src/assets/images/kea-large.webp`, from `kea.png`). MuniBox and Hertz show neutral "Image pending" plates
+- Hover: slow 2.5% image zoom and title underline. Reveal: fade-up with the image settling from a slight zoom
+- Phone: MuniBox runs edge to edge, Hertz sits inset from the start edge, AI playground full width; captions stack
+- Case-study pages: added previous / next project navigation (wraps around). The rest of the case-study page is unchanged
+- Preview: static snapshot published as a private artifact (project links go to snapshot copies of the placeholder case-study pages)
+
 ## Stage 3 notes (2026-10-25)
 
 - Next.js 16.4.3 with Cache Components and partial prefetching (scaffold defaults). Routes: `/` → `/en` (temporary redirect), `/en`, `/en/work/[slug]` (temporary "being written" pages so cards don't 404)

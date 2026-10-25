@@ -54,12 +54,25 @@ export const en = {
     ] as { label: string; href: string | null }[],
     pending: "pending",
   },
+  gallery: {
+    metaTitle: "Gallery concept",
+    nav: { work: "Work", contact: "Contact" },
+    intro: draft(
+      "I design mobile apps, dashboards and small AI experiments. Visual Communication, Shenkar, 2023.",
+    ),
+    imagePending: "Image pending",
+    view: "View project",
+    contactTitle: "Contact",
+    contactNote: "Links will be added once they're ready.",
+  },
   caseStudy: {
     eyebrow: "Case study",
     inProgress: "This case study is being written.",
     inProgressBody:
       "The screens and story for this project haven't been added yet. Everything on this page is a placeholder.",
     back: "Back to all work",
+    previous: "Previous project",
+    next: "Next project",
     role: "Role",
     team: "Team",
   },

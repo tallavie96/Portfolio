@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { enabledLocales, isEnabledLocale } from "@/i18n/config";
 import { getDictionary } from "@/i18n/dictionaries";
-import { getProject, projectSlugs } from "@/content/projects";
+import { getAdjacentProjects, getProject, projectSlugs } from "@/content/projects";
 import { Placeholder } from "@/components/ui/Placeholder";
 import { DraftTag } from "@/components/ui/DraftTag";
 import { Toolbar } from "@/components/site/Toolbar";
@@ -29,6 +29,7 @@ export default async function CaseStudyPage({ params }: PageProps<"/[lang]/work/
   const project = getProject(lang, slug);
   if (!project) notFound();
   const dict = getDictionary(lang);
+  const { previous, next } = getAdjacentProjects(lang, project.slug);
 
   return (
     <>
@@ -53,6 +54,21 @@ export default async function CaseStudyPage({ params }: PageProps<"/[lang]/work/
             </div>
           </div>
         </section>
+
+        <nav className={styles.pager} aria-label={`${dict.caseStudy.previous} / ${dict.caseStudy.next}`}>
+          <Link href={`/${lang}/work/${previous.slug}`} className={styles.prev} rel="prev">
+            <span className={styles.pagerLabel}>
+              <Arrow back /> {dict.caseStudy.previous}
+            </span>
+            <span className={styles.pagerTitle}>{previous.title}</span>
+          </Link>
+          <Link href={`/${lang}/work/${next.slug}`} className={styles.next} rel="next">
+            <span className={styles.pagerLabel}>
+              {dict.caseStudy.next} <Arrow />
+            </span>
+            <span className={styles.pagerTitle}>{next.title}</span>
+          </Link>
+        </nav>
       </main>
       <SiteFooter dict={dict} />
       <RevealObserver />
@@ -69,5 +85,13 @@ export default async function CaseStudyPage({ params }: PageProps<"/[lang]/work/
         ]}
       />
     </>
+  );
+}
+
+function Arrow({ back = false }: { back?: boolean }) {
+  return (
+    <svg className={`${styles.arrow} ${back ? styles.arrowBack : ""}`} viewBox="0 0 14 14" aria-hidden="true">
+      <path d="M1 7h11M8 3l4 4-4 4" fill="none" stroke="currentColor" strokeWidth="1.5" />
+    </svg>
   );
 }

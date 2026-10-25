@@ -2,6 +2,7 @@ import type { StaticImageData } from "next/image";
 import type { Locale } from "@/i18n/config";
 import { draft, type AccentColor, type Copy } from "./types";
 import keaCover from "@/assets/images/kea.webp";
+import keaLarge from "@/assets/images/kea-large.webp";
 
 export type ProjectType = "case-study" | "collection";
 
@@ -11,6 +12,8 @@ interface ProjectBase {
   type: ProjectType;
   color: AccentColor;
   cover: StaticImageData | null;
+  /** Large image for the gallery homepage concept; null until real screens arrive. */
+  galleryImage: StaticImageData | null;
 }
 
 interface ProjectText {
@@ -24,9 +27,9 @@ interface ProjectText {
 export type Project = ProjectBase & ProjectText;
 
 const base: ProjectBase[] = [
-  { slug: "munibox", number: "01", type: "case-study", color: "sky", cover: null },
-  { slug: "hertz-portal", number: "02", type: "case-study", color: "butter", cover: null },
-  { slug: "ai-playground", number: "03", type: "collection", color: "blush", cover: keaCover },
+  { slug: "munibox", number: "01", type: "case-study", color: "sky", cover: null, galleryImage: null },
+  { slug: "hertz-portal", number: "02", type: "case-study", color: "butter", cover: null, galleryImage: null },
+  { slug: "ai-playground", number: "03", type: "collection", color: "blush", cover: keaCover, galleryImage: keaLarge },
 ];
 
 const text: Partial<Record<Locale, Record<string, ProjectText>>> = {
@@ -64,3 +67,13 @@ export function getProject(locale: Locale, slug: string): Project | undefined {
 }
 
 export const projectSlugs = base.map((p) => p.slug);
+
+/** Previous and next project, wrapping around, for browsing between case studies. */
+export function getAdjacentProjects(locale: Locale, slug: string) {
+  const all = getProjects(locale);
+  const i = all.findIndex((p) => p.slug === slug);
+  return {
+    previous: all[(i - 1 + all.length) % all.length],
+    next: all[(i + 1) % all.length],
+  };
+}
