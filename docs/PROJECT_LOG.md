@@ -68,6 +68,16 @@ Supersedes the v3 "playground board" styling. Information architecture, content 
 - Motion: scroll reveals (fade + 18px rise, 700ms, staggered 90ms) via `RevealObserver`; nothing hidden without JS; none with reduced motion. No cursor effects
 - Case-study placeholder page: same split layout, glow removed
 
+## Homepage concept: interactive showcase (2026-10-25, awaiting approval)
+
+- Route `/en/showcase`, isolated, `noindex`. Chosen interaction: Option A, one project per screen with previous/next, plus a clickable title index
+- Desktop fits the viewport (tested 1440×900, 1280×720): header (name, role, intro, About / Contact), caption column (counter `01 / 03`, marker descriptor, title, summary, tags, "View project", arrow buttons, index, hint), large image wall, one-line contact footer
+- Navigation: arrow buttons, ←/→ keys (flipped in RTL), touch/pen swipe (direction-aware), index buttons, `#slug` in the URL; loops around. Image slides 6% from the travel direction and fades over ~0.6s; caption swaps with a short fade
+- Phone: normal page flow, image first, counter + arrows directly under it, caption below
+- Accessibility: carousel/slide roles, live "Project n of 3" status, inactive slides hidden from assistive tech and tab order; reduced motion = fade only
+- Project order changed to Tal's list: 01 MuniBox, 02 AI playground (kea), 03 Hertz portal (affects all pages and previous/next)
+- Site-wide: page background lightened to #FAF8F5; dotted pattern removed from the page background and kept only as faint accents (homepage hero fade, gallery intro, showcase image wall). Plum and Bricolage were already removed earlier
+
 ## Alternative homepage: gallery concept (2026-10-25, for comparison)
 
 - Route `/en/gallery`, not linked from the main homepage, `noindex`. Main homepage `/en` unchanged

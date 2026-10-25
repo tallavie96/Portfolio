@@ -1,0 +1,318 @@
+/* One project per screen: caption column + large image wall. */
+.showcase {
+  --dir: 1;
+  display: grid;
+  grid-template-columns: minmax(260px, 4fr) minmax(0, 8fr);
+  gap: var(--col-gap);
+  min-height: 0;
+  height: 100%;
+}
+:global([dir="rtl"]) .showcase {
+  --dir: -1;
+}
+
+/* ----- Caption column ----- */
+.info {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: var(--s-5);
+  min-height: 0;
+  padding-block: var(--s-2);
+}
+
+.counter {
+  font-size: var(--t-small);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+}
+.total {
+  color: var(--ink-2);
+}
+
+.captions {
+  display: grid;
+  align-content: center;
+}
+/* All captions share one cell; only the active one shows. */
+.caption {
+  grid-area: 1 / 1;
+  display: grid;
+  justify-items: start;
+  gap: var(--s-4);
+}
+.caption[data-state="after"],
+.caption[data-state="before"] {
+  visibility: hidden;
+}
+.caption[data-state="active"] {
+  animation: caption-in 420ms var(--ease) both;
+}
+@keyframes caption-in {
+  from {
+    opacity: 0;
+    transform: translateX(calc(14px * var(--dir)));
+  }
+}
+
+.descriptor {
+  padding: 2px 8px;
+  background: var(--marker);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transform: rotate(-1.5deg);
+}
+.title {
+  font-size: clamp(2.25rem, 3.6vw, 3.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+}
+.summary {
+  color: var(--ink-2);
+  max-width: 32ch;
+}
+.draft {
+  display: inline-block;
+  padding: 1px 7px;
+  background: var(--butter);
+  color: var(--ink);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transform: rotate(-1.5deg);
+  white-space: nowrap;
+}
+.details {
+  font-size: var(--t-label);
+  color: var(--ink-2);
+}
+.view {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  margin-top: var(--s-2);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+}
+.view:hover .arrow {
+  translate: calc(3px * var(--dir)) 0;
+}
+
+/* ----- Controls ----- */
+.controls {
+  display: grid;
+  gap: var(--s-5);
+}
+.arrows {
+  display: flex;
+  gap: var(--s-3);
+}
+.arrowBtn {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border: 1px solid var(--ink);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition:
+    background var(--t-fast) var(--ease),
+    color var(--t-fast) var(--ease);
+}
+@media (hover: hover) {
+  .arrowBtn:hover {
+    background: var(--ink);
+    color: var(--canvas);
+  }
+}
+.arrowBtn:active {
+  background: var(--ink);
+  color: var(--canvas);
+}
+.arrowBtn:focus-visible {
+  border-radius: 50%;
+}
+
+.index {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 2px;
+  font-size: var(--t-small);
+}
+.index button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-2);
+  min-height: 32px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink-2);
+  font: inherit;
+  cursor: pointer;
+  text-align: start;
+}
+.index button:hover {
+  color: var(--ink);
+}
+.index button[aria-current] {
+  color: var(--ink);
+}
+.index button[aria-current]::after {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--dot-color);
+}
+.indexNum {
+  font-variant-numeric: tabular-nums;
+  font-size: var(--t-label);
+}
+.hint {
+  color: var(--ink-2);
+  font-size: var(--t-label);
+}
+
+/* ----- Image wall ----- */
+.wall {
+  position: relative;
+  overflow: hidden;
+  min-height: 0;
+  height: 100%;
+  border-radius: 4px;
+  background-color: var(--wall);
+  background-image: radial-gradient(circle, var(--dot) 1px, transparent 1.4px);
+  background-size: 22px 22px;
+  touch-action: pan-y;
+}
+.slide {
+  position: absolute;
+  inset: 0;
+  padding: clamp(24px, 5%, 64px);
+  transition:
+    opacity 600ms var(--ease),
+    transform 700ms var(--ease);
+}
+.slide[data-state="active"] {
+  z-index: 2;
+  opacity: 1;
+  transform: none;
+}
+.slide[data-state="after"] {
+  opacity: 0;
+  transform: translateX(calc(6% * var(--dir)));
+}
+.slide[data-state="before"] {
+  opacity: 0;
+  transform: translateX(calc(-6% * var(--dir)));
+}
+.slideLink {
+  position: relative;
+  text-decoration: none;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  -webkit-user-drag: none;
+}
+.slideLink img {
+  object-fit: contain;
+  transition: transform 900ms var(--ease);
+}
+.slide:not([data-state="active"]) .slideLink img {
+  transform: scale(1.03);
+}
+.slideLink:focus-visible {
+  outline-offset: -6px;
+}
+.pending {
+  display: grid;
+  place-items: center;
+  width: min(100%, 560px);
+  aspect-ratio: 4 / 3;
+  background: var(--surface);
+  color: var(--ink-2);
+  font-size: var(--t-label);
+  letter-spacing: 0.02em;
+}
+
+.arrow {
+  width: 16px;
+  height: 16px;
+  transition: translate var(--t-fast) var(--ease);
+}
+.back {
+  transform: scaleX(-1);
+}
+:global([dir="rtl"]) .arrow {
+  transform: scaleX(-1);
+}
+:global([dir="rtl"]) .back {
+  transform: none;
+}
+
+/* ----- Phone: image, then counter + arrows within thumb reach, then caption ----- */
+@media (max-width: 760px) {
+  .showcase {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto auto auto;
+    height: auto;
+    gap: var(--s-4) var(--s-3);
+  }
+  .info {
+    display: contents;
+  }
+  .wall {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    height: min(50svh, 110vw);
+  }
+  .slide {
+    padding: 18px;
+  }
+  .counter {
+    grid-column: 1;
+    grid-row: 2;
+    align-self: center;
+  }
+  .controls {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  .captions {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    align-content: start;
+    padding-top: var(--s-2);
+  }
+  .title {
+    font-size: 2.25rem;
+  }
+  .arrowBtn {
+    width: 48px;
+    height: 48px;
+  }
+  .index,
+  .hint {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide,
+  .slide[data-state] {
+    transform: none;
+  }
+  .caption[data-state="active"] {
+    animation: none;
+  }
+}

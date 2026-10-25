@@ -65,6 +65,18 @@ export const en = {
     contactTitle: "Contact",
     contactNote: "Links will be added once they're ready.",
   },
+  showcase: {
+    metaTitle: "Showcase concept",
+    nav: { about: "About", contact: "Contact" },
+    carouselLabel: "Selected projects",
+    indexLabel: "All projects",
+    previous: "Previous project",
+    next: "Next project",
+    view: "View project",
+    imagePending: "Image pending",
+    status: "Project {n} of {total}: {title}",
+    hint: "Arrow keys or swipe to browse",
+  },
   caseStudy: {
     eyebrow: "Case study",
     inProgress: "This case study is being written.",
