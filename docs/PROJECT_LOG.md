@@ -4,7 +4,7 @@ Running list of decisions, open questions and next steps. Updated at each stage.
 
 ## Current stage
 
-**Stage 2 — Visual concept.** Preview at `design/visual-concept.html` (also published as a private claude.ai artifact). Waiting for Tal's feedback.
+**Stage 2 — Visual concept.** Tal asked me to decide the mix. Chosen concept: v3 "the playground board" at `design/visual-concept-v3.html`. v1 and v2 are kept for reference. Next: Stage 3 homepage.
 
 Stage 1 approved 2026-10-25.
 
@@ -27,15 +27,16 @@ Stage 1 approved 2026-10-25.
 - Default language at `/` is English
 - Hebrew paused (2026-10-25): keep the RTL-ready structure, but no Hebrew copy or Hebrew polish until Tal resumes it
 
-## Stage 2 proposal (awaiting approval)
+## Stage 2 decision: v3 "the playground board" (Tal delegated the choice, 2026-10-25)
 
-- Concept "the working canvas": cool grey canvas, white frames, tool-style frame labels, selection box (corner handles) as the shared hover and focus state, collaborator cursor in the hero
-- Palette: canvas #EFEEF3, frame #FFFFFF, ink #1C1B22, ink-2 #5D5A69, line #D6D3DE, select #5A45E0, redline #E0457B; pastels lilac #DCD3FB, blush #F8D3DE, sky #CFE3F6, butter #F7E7A6 (surfaces only). All text pairs pass WCAG AA
-- Project colors: MuniBox sky, Hertz butter, AI playground lilac (+ blush)
-- Type: Fraunces (Latin) + Frank Ruhl Libre (Hebrew) display; IBM Plex Sans + Plex Sans Hebrew text; Plex Mono labels. Hebrew glyph coverage verified from the font files (letters, finals, maqaf, geresh/gershayim, ₪, niqqud)
-- Grid 12 / 8 / 4 columns, max width 1360px, margins 16–56px, 4px spacing scale
-- Navigation: floating toolbar at bottom center on every screen size
-- Motion: one easing curve, 140 / 240 / 560ms; zoom-into-frame page transition; scrollytelling only in case studies
+- Idea: a FigJam-style board where scrapbook pieces and design-tool details live together
+- From v2: warm paper #F6F0E6, card #FFFDF9, ink #2B1D22, plum #5E1A36, ink-2 #6A5A60 (paper/card only), blush #F5B8CC, sky #B9DAF3, butter #F2DC85; full-width color bands; collage hero (taped kea screens, portrait cut-out, sticky note, stamp); pill buttons; rounded photos
+- From v1: dot-grid canvas in the hero, typewriter frame labels above project cards, selection handles on hover and keyboard focus, "Tal" collaborator cursor (#5A45E0), one redline
+- Restraint: one torn edge (hero into work); other bands meet straight
+- Type: Bricolage Grotesque (display, width axis), IBM Plex Sans (body), Courier Prime (labels, notes). Neither Bricolage nor Courier Prime has Hebrew; partners needed when Hebrew resumes
+- Hover on projects: lift + straighten + selection box. Touch: no hover effects. Reduced motion: no movement
+- Toolbar: cream pill, plum border, bottom center
+- Portrait used via `design/portrait-preview.webp` (resized, EXIF/GPS stripped). Original `IMG_2491.jpeg` still has GPS data
 
 ## Proposed decisions (Stage 1, approved)
 
