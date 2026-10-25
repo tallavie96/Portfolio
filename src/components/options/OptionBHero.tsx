@@ -1,0 +1,140 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useState, type CSSProperties } from "react";
+import type { OptionProject } from "./data";
+import styles from "./OptionB.module.css";
+
+const tints = ["#e9eef2", "#f2eee0", "#f3e9ec"];
+
+/**
+ * Option B opening (after Moheim): a large framed slide per project with the name
+ * set thin and wide across it, and a small caption (counter, thumbnail, kind,
+ * title) that opens the project. Advances on its own; can be paused.
+ */
+export function OptionBHero({
+  name,
+  projects,
+  labels,
+}: {
+  name: string;
+  projects: OptionProject[];
+  labels: { imagePending: string; pause: string; play: string; viewProject: string };
+}) {
+  const [current, setCurrent] = useState(0);
+  const [playing, setPlaying] = useState(true);
+  const total = projects.length;
+
+  useEffect(() => {
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- respect the user's motion setting on load
+      setPlaying(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!playing) return;
+    const id = setTimeout(() => setCurrent((c) => (c + 1) % total), 6000);
+    return () => clearTimeout(id);
+  }, [playing, current, total]);
+
+  const active = projects[current];
+  const image = (p: OptionProject) => p.cover ?? p.gallery[0] ?? null;
+
+  return (
+    <section className={styles.hero} aria-roledescription="carousel" aria-label={labels.viewProject} data-option="b">
+      <div className={styles.frame}>
+        {projects.map((p, i) => {
+          const img = image(p);
+          return (
+            <div
+              key={p.slug}
+              className={styles.slide}
+              data-slide={i}
+              data-active={i === current}
+              aria-hidden={i !== current}
+              style={{ "--tint": tints[i % tints.length] } as CSSProperties}
+            >
+              {img ? (
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  sizes="100vw"
+                  priority={i === 0}
+                  className={styles.slideImage}
+                />
+              ) : (
+                <span className={styles.slidePending}>
+                  {labels.imagePending} · {p.title}
+                </span>
+              )}
+            </div>
+          );
+        })}
+
+        <p className={styles.wordmark} aria-hidden="true">
+          {name}
+        </p>
+
+        <div className={styles.caption}>
+          {projects.map((p, i) => {
+            const img = image(p);
+            return (
+              <div
+                key={p.slug}
+                className={styles.captionItem}
+                data-cap={i}
+                data-active={i === current}
+                hidden={i !== current}
+              >
+                <span className={styles.counter}>
+                  <bdi dir="ltr">
+                    {p.number} <span>/</span> {String(total).padStart(2, "0")}
+                  </bdi>
+                </span>
+                <Link href={p.href} className={styles.captionLink}>
+                  <span className={styles.thumb}>
+                    {img ? <Image src={img.src} alt="" fill sizes="96px" /> : <span className={styles.thumbPending} />}
+                  </span>
+                  <span className={styles.captionText}>
+                    <span className={styles.kind}>{p.kind}</span>
+                    <span className={styles.captionTitle}>
+                      {p.title}
+                      <svg className={styles.arrow} viewBox="0 0 16 16" aria-hidden="true">
+                        <path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" strokeWidth="1.2" />
+                      </svg>
+                    </span>
+                  </span>
+                </Link>
+              </div>
+            );
+          })}
+          <button
+            type="button"
+            className={styles.pauseBtn}
+            onClick={() => setPlaying((v) => !v)}
+            aria-label={playing ? labels.pause : labels.play}
+            aria-pressed={!playing}
+            data-pause
+          >
+            <span data-icon="pause" hidden={!playing}>
+              <svg viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M5 3v10M11 3v10" stroke="currentColor" strokeWidth="1.5" />
+              </svg>
+            </span>
+            <span data-icon="play" hidden={playing}>
+              <svg viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M5 3l8 5-8 5z" fill="currentColor" />
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+      <p className="visually-hidden" aria-live="polite" data-live>
+        {active.number} / {total}: {active.title}
+      </p>
+    </section>
+  );
+}

@@ -2,7 +2,7 @@
 
 Product design portfolio built with Next.js (App Router), TypeScript and CSS Modules.
 
-Status: **design reset.** The pages are an unstyled content skeleton while a new visual direction is chosen. Copy marked "Draft copy" and "Placeholder" images are not final.
+Status: **choosing a direction.** The main pages are an unstyled content skeleton; three homepage options live at `/en/options` (A, B, C). Copy marked "Draft copy" and "Placeholder" images are not final.
 
 ## Run it locally
 

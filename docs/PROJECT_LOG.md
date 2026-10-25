@@ -6,7 +6,17 @@ Running list of decisions, open questions and next steps. Updated at each stage.
 
 **Design reset (2026-10-25).** Tal didn't like any of the visual directions, so the whole design layer was removed and the visual design starts from scratch. The site is now an unstyled content skeleton on top of the working plumbing.
 
-Next: Tal shares 2–3 real portfolio sites they love (with a line on what they like in each); Claude makes 3 clearly different one-screen directions side by side using real kea screens; Tal picks one. In parallel: MuniBox and Hertz screens.
+**Three homepage options built (2026-10-25), waiting for Tal to choose.** Index at `/en/options`; each option is isolated and `noindex`:
+
+- **A — Letter grid** (`/en/option-a`, after hervebaillargeon.com): "TAL LAVIE" as a 6-column grid of condensed letters (Karantina, has Hebrew) filling one screen, two cells rotating real kea screens every 3.2s; middle band "WORK +" / name + role / "+ INFO" opens full-screen overlays (project list, intro + contact). Black on white, IBM Plex Mono labels, no scroll, no hover effects. Phone: 3 columns, TAL / picture / LAV / IE + picture
+- **B — Typographic slideshow** (`/en/option-b`, after moheim.com): thin geometric type with wide tracking (Jost), large framed opening slide per project in pale tints with the name across it, caption `01 / 03` + thumbnail + kind + title linking to the project, auto-advance 6s with pause; below, project rows and About revealed with CSS scroll-driven animations (static where unsupported or with reduced motion)
+- **C — Exposed grid, two views** (`/en/option-c`, after almond.studio + drivecapital.com/team): hairline grid, Anton + Newsreader light + IBM Plex Mono. Gallery view (default): project name as a huge marquee behind the image, round "VIEW", thumbnail strip to pick. List view: project names in light serif, selection shows image, kind chip and a scrolling description. Arrow keys switch project (RTL-aware)
+
+Reference notes (what was observed): Hervé: beige #EDE6DB + black, DIN Engschrift letters, film stills in empty cells, "WORKS +" opens centered title list. Moheim: TT Commons, wide-tracked caps nav, framed hero slider with thumbnail caption, custom smooth scroll. Almond: exposed hairline grid, light serif client list with image + tag + ticker, LIST / GRID toggle. Drive: staggered grid with rules and mono labels; "Gallery view" with name marquee, central photo, round VIEW button and thumbnail strip.
+
+Assets added: `kea-onboarding.webp`, `kea-products.webp`, `kea-routine.webp` (crops of the three phone screens in `kea.png`), listed in each project's `gallery`.
+
+Fonts used by B and C (Jost, Anton, Newsreader, Plex Mono) have no Hebrew; partners needed once a direction is chosen. In parallel: MuniBox and Hertz screens.
 
 Stage 1 approved 2026-10-25.
 

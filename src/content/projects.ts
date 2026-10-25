@@ -2,6 +2,9 @@ import type { StaticImageData } from "next/image";
 import type { Locale } from "@/i18n/config";
 import { draft, type Copy } from "./types";
 import keaCover from "@/assets/images/kea.webp";
+import keaOnboarding from "@/assets/images/kea-onboarding.webp";
+import keaProducts from "@/assets/images/kea-products.webp";
+import keaRoutine from "@/assets/images/kea-routine.webp";
 
 export type ProjectType = "case-study" | "collection";
 
@@ -11,6 +14,8 @@ interface ProjectBase {
   type: ProjectType;
   /** Real project imagery only; null until Tal provides screens. */
   cover: StaticImageData | null;
+  /** More real screens, for layouts that show several images. Empty until provided. */
+  gallery: { src: StaticImageData; alt: string }[];
 }
 
 interface ProjectText {
@@ -24,9 +29,19 @@ interface ProjectText {
 export type Project = ProjectBase & ProjectText;
 
 const base: ProjectBase[] = [
-  { slug: "munibox", number: "01", type: "case-study", cover: null },
-  { slug: "hertz-portal", number: "02", type: "case-study", cover: null },
-  { slug: "ai-playground", number: "03", type: "collection", cover: keaCover },
+  { slug: "munibox", number: "01", type: "case-study", cover: null, gallery: [] },
+  { slug: "hertz-portal", number: "02", type: "case-study", cover: null, gallery: [] },
+  {
+    slug: "ai-playground",
+    number: "03",
+    type: "collection",
+    cover: keaCover,
+    gallery: [
+      { src: keaOnboarding, alt: "kea onboarding screen: search or photograph your products to build a routine" },
+      { src: keaProducts, alt: "kea product list grouped by step, with ingredients and a retinol warning" },
+      { src: keaRoutine, alt: "kea routine screen with morning and evening steps and a full or minimal toggle" },
+    ],
+  },
 ];
 
 const text: Partial<Record<Locale, Record<string, ProjectText>>> = {

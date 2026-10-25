@@ -1,0 +1,209 @@
+/* Option A: one screen, black on white, condensed letters, mono labels. */
+.screen {
+  --ink: #0e0e0e;
+  --paper: #ffffff;
+  --gap: clamp(10px, 1.4vw, 20px);
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr auto 1fr;
+  height: 100dvh;
+  min-height: 560px;
+  padding: var(--gap);
+  overflow: hidden;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+/* The letter grid spans the whole screen; the band sits in its middle row. */
+.grid {
+  grid-row: 1 / -1;
+  grid-column: 1;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-rows: 1fr var(--band, 96px) 1fr;
+  grid-template-areas:
+    "c0 c1 c2 c3 c3 c4"
+    ". . . . . ."
+    "c5 c6 c7 c8 c9 c10";
+  gap: 0 var(--gap);
+}
+
+.letter {
+  display: flex;
+  align-items: flex-start;
+  font-family: var(--font-a-display), "Arial Narrow", sans-serif;
+  font-weight: 700;
+  /* as tall as the row allows, but never wider than its column */
+  font-size: min(calc((100dvh - var(--band, 96px)) / 2 * 0.95), 21vw);
+  line-height: 0.74;
+  text-transform: uppercase;
+}
+/* bottom row sits on the bottom edge */
+.letter.bottom {
+  align-items: flex-end;
+}
+
+.picture {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  background: #f3f3f3;
+  align-self: start;
+  height: 62%;
+}
+.picture.bottom {
+  align-self: end;
+}
+.picture img {
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 900ms ease;
+}
+.picture img[data-on="true"] {
+  opacity: 1;
+}
+.pending {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font: 400 0.75rem var(--font-a-mono), monospace;
+  text-transform: uppercase;
+}
+
+/* Middle band: Work + | name | + Info */
+.band {
+  grid-row: 2;
+  grid-column: 1;
+  z-index: 3;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  height: var(--band, 96px);
+  font-family: var(--font-a-mono), monospace;
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
+}
+.toggle {
+  justify-self: start;
+  padding: 8px 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.toggle:last-child {
+  justify-self: end;
+}
+.center {
+  margin: 0;
+  text-align: center;
+  line-height: 1.35;
+}
+
+/* Overlay panels replace the letters, the band stays in place */
+.panel {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  padding: var(--gap);
+  background: var(--paper);
+  animation: panel-in 260ms ease both;
+}
+@keyframes panel-in {
+  from {
+    opacity: 0;
+  }
+}
+.screen[data-panel="work"] .grid,
+.screen[data-panel="info"] .grid,
+.screen[data-panel="work"] .center,
+.screen[data-panel="info"] .center {
+  visibility: hidden;
+}
+.workList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-family: var(--font-a-display), "Arial Narrow", sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.5rem, 7vh, 4.5rem);
+  line-height: 1.05;
+}
+.workList a {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35em;
+  color: inherit;
+  text-decoration: none;
+}
+.num {
+  font: 400 0.8125rem var(--font-a-mono), monospace;
+}
+.info {
+  max-width: 36rem;
+  text-align: center;
+  font-family: var(--font-a-mono), monospace;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+.intro {
+  margin: 0 0 1.5em;
+  font-size: 1.125rem;
+}
+.draft {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  background: #000;
+  color: #fff;
+  padding: 1px 5px;
+}
+.contact {
+  margin: 0;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+/* Phone: three columns, the name reads TAL / LAV / IE, pictures between */
+@media (max-width: 760px) {
+  .screen {
+    --band: 72px;
+    grid-template-rows: auto 1fr;
+  }
+  .band {
+    grid-row: 1;
+    font-size: 0.75rem;
+  }
+  .grid {
+    grid-row: 2;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: 1fr 1.2fr 1fr 1fr;
+    grid-template-areas:
+      "c0 c1 c4"
+      "c3 c3 c3"
+      "c5 c6 c7"
+      "c9 c10 c8";
+    gap: var(--gap);
+  }
+  .letter,
+  .letter.bottom {
+    align-items: center;
+    justify-content: center;
+  }
+  .letter {
+    font-size: min(17vh, 30vw);
+  }
+  .picture,
+  .picture.bottom {
+    height: 100%;
+    align-self: stretch;
+  }
+  .blank {
+    display: none;
+  }
+}
