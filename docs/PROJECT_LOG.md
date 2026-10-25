@@ -4,19 +4,19 @@ Running list of decisions, open questions and next steps. Updated at each stage.
 
 ## Current stage
 
-**Design reset (2026-10-25).** Tal didn't like any of the visual directions, so the whole design layer was removed and the visual design starts from scratch. The site is now an unstyled content skeleton on top of the working plumbing.
+**Direction chosen: Option B, after moheim.com (2026-10-25).** It is now the real homepage at `/en`. Options A and C and the `/en/options` index were removed (git history has them, commit `f09e664`).
 
-**Three homepage options built (2026-10-25), waiting for Tal to choose.** Index at `/en/options`; each option is isolated and `noindex`:
+Homepage now:
+- **Entrance (after Moheim's loader):** grey curtain (#555753) with the name small in the bottom corner; a thin ring draws itself closed (~1s); the curtain lifts (0.9s) while the ring flies to and becomes the full stop in "TAL LAVIE." (Moheim's ring becomes the O in MOHEIM; Tal's name has no O, so it lands as the full stop). About 2.2s total, once per visit (sessionStorage), skipped with reduced motion; without JavaScript the curtain still lifts by CSS
+- **Header:** name (wide-tracked caps) and "Product designer" only. Work, About and Contact moved to the footer
+- **Opening:** framed slide per project in pale tints with "TAL LAVIE." across it; caption `01 / 03` + thumbnail + kind + title linking to the project; auto-advance 6s, pause button
+- **Below:** project rows and About with CSS scroll-driven reveals (static where unsupported or with reduced motion)
+- **Footer:** Work · About | Contact + Email / LinkedIn / CV (pending) | name
+- **Type:** Jost (no Hebrew; partner needed when Hebrew resumes)
 
-- **A — Letter grid** (`/en/option-a`, after hervebaillargeon.com): "TAL LAVIE" as a 6-column grid of condensed letters (Karantina, has Hebrew) filling one screen, two cells rotating real kea screens every 3.2s; middle band "WORK +" / name + role / "+ INFO" opens full-screen overlays (project list, intro + contact). Black on white, IBM Plex Mono labels, no scroll, no hover effects. Phone: 3 columns, TAL / picture / LAV / IE + picture
-- **B — Typographic slideshow** (`/en/option-b`, after moheim.com): thin geometric type with wide tracking (Jost), large framed opening slide per project in pale tints with the name across it, caption `01 / 03` + thumbnail + kind + title linking to the project, auto-advance 6s with pause; below, project rows and About revealed with CSS scroll-driven animations (static where unsupported or with reduced motion)
-- **C — Exposed grid, two views** (`/en/option-c`, after almond.studio + drivecapital.com/team): hairline grid, Anton + Newsreader light + IBM Plex Mono. Gallery view (default): project name as a huge marquee behind the image, round "VIEW", thumbnail strip to pick. List view: project names in light serif, selection shows image, kind chip and a scrolling description. Arrow keys switch project (RTL-aware)
+Reference notes: Moheim uses TT Commons, a wide-tracked caps nav, a framed hero slider with a thumbnail caption, a custom smooth scroll, and a grey loader whose ring becomes the O of the logo as the curtain lifts.
 
-Reference notes (what was observed): Hervé: beige #EDE6DB + black, DIN Engschrift letters, film stills in empty cells, "WORKS +" opens centered title list. Moheim: TT Commons, wide-tracked caps nav, framed hero slider with thumbnail caption, custom smooth scroll. Almond: exposed hairline grid, light serif client list with image + tag + ticker, LIST / GRID toggle. Drive: staggered grid with rules and mono labels; "Gallery view" with name marquee, central photo, round VIEW button and thumbnail strip.
-
-Assets added: `kea-onboarding.webp`, `kea-products.webp`, `kea-routine.webp` (crops of the three phone screens in `kea.png`), listed in each project's `gallery`.
-
-Fonts used by B and C (Jost, Anton, Newsreader, Plex Mono) have no Hebrew; partners needed once a direction is chosen. In parallel: MuniBox and Hertz screens.
+Assets: `kea-onboarding.webp`, `kea-products.webp`, `kea-routine.webp` (crops of the three phone screens in `kea.png`), listed in the AI playground's `gallery`. Next: MuniBox and Hertz screens; project pages (still unstyled).
 
 Stage 1 approved 2026-10-25.
 

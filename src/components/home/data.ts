@@ -2,13 +2,13 @@ import type { StaticImageData } from "next/image";
 import type { Locale } from "@/i18n/config";
 import { getProjects } from "@/content/projects";
 
-export interface OptionImage {
+export interface HomeImage {
   src: StaticImageData;
   alt: string;
 }
 
-/** Plain, serialisable project data shared by the three homepage options. */
-export interface OptionProject {
+/** Plain, serialisable project data for the homepage. */
+export interface HomeProject {
   slug: string;
   number: string;
   title: string;
@@ -16,11 +16,11 @@ export interface OptionProject {
   tags: string[];
   summary: { text: string; draft: boolean };
   href: string;
-  cover: OptionImage | null;
-  gallery: OptionImage[];
+  cover: HomeImage | null;
+  gallery: HomeImage[];
 }
 
-export function getOptionProjects(lang: Locale): OptionProject[] {
+export function getHomeProjects(lang: Locale): HomeProject[] {
   return getProjects(lang).map((p) => ({
     slug: p.slug,
     number: p.number,

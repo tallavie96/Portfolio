@@ -3,24 +3,24 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState, type CSSProperties } from "react";
-import type { OptionProject } from "./data";
-import styles from "./OptionB.module.css";
+import type { HomeProject } from "./data";
+import styles from "./Home.module.css";
 
 const tints = ["#e9eef2", "#f2eee0", "#f3e9ec"];
 
 /**
- * Option B opening (after Moheim): a large framed slide per project with the name
+ * Homepage opening (after Moheim): a large framed slide per project with the name
  * set thin and wide across it, and a small caption (counter, thumbnail, kind,
  * title) that opens the project. Advances on its own; can be paused.
  */
-export function OptionBHero({
+export function HomeHero({
   name,
   projects,
   labels,
 }: {
   name: string;
-  projects: OptionProject[];
-  labels: { imagePending: string; pause: string; play: string; viewProject: string };
+  projects: HomeProject[];
+  labels: { imagePending: string; pause: string; play: string; slideshow: string };
 }) {
   const [current, setCurrent] = useState(0);
   const [playing, setPlaying] = useState(true);
@@ -40,10 +40,10 @@ export function OptionBHero({
   }, [playing, current, total]);
 
   const active = projects[current];
-  const image = (p: OptionProject) => p.cover ?? p.gallery[0] ?? null;
+  const image = (p: HomeProject) => p.cover ?? p.gallery[0] ?? null;
 
   return (
-    <section className={styles.hero} aria-roledescription="carousel" aria-label={labels.viewProject} data-option="b">
+    <section className={styles.hero} aria-roledescription="carousel" aria-label={labels.slideshow}>
       <div className={styles.frame}>
         {projects.map((p, i) => {
           const img = image(p);
@@ -74,8 +74,10 @@ export function OptionBHero({
           );
         })}
 
+        {/* The full stop is where the intro's loading ring lands */}
         <p className={styles.wordmark} aria-hidden="true">
           {name}
+          <span className={styles.stop} data-stop />
         </p>
 
         <div className={styles.caption}>

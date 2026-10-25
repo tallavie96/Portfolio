@@ -1,4 +1,4 @@
-/* Option B: thin geometric type, wide tracking, calm off-white, large framed images. */
+/* Homepage (after Moheim): thin geometric type, wide tracking, white, large framed images. */
 .page {
   --ink: #1b1d19;
   --ink-2: #6b6d67;
@@ -7,20 +7,19 @@
   --gutter: clamp(16px, 3vw, 44px);
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--font-b), "Futura", "Avenir Next", sans-serif;
+  font-family: var(--font-sans), "Futura", "Avenir Next", sans-serif;
   font-weight: 400;
 }
 
-/* ----- Header ----- */
+/* ----- Header: name and role only; navigation lives in the footer ----- */
 .header {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
   height: 88px;
   padding-inline: var(--gutter);
 }
 .brand {
-  justify-self: start;
   font-size: 0.9375rem;
   font-weight: 500;
   letter-spacing: 0.32em;
@@ -28,20 +27,10 @@
   color: inherit;
   text-transform: uppercase;
 }
-.nav {
-  display: flex;
-  gap: clamp(20px, 3vw, 44px);
-}
-.nav a,
-.navEnd {
+.role {
   font-size: 0.8125rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  text-decoration: none;
-  color: inherit;
-}
-.navEnd {
-  justify-self: end;
   color: var(--ink-2);
 }
 
@@ -99,6 +88,19 @@
   text-transform: uppercase;
   white-space: nowrap;
   pointer-events: none;
+}
+
+/* Full stop after the name: the intro ring lands here */
+.stop {
+  display: inline-block;
+  width: 0.1em;
+  height: 0.1em;
+  margin-inline-start: 0.06em;
+  border-radius: 50%;
+  background: currentColor;
+}
+:global(html[data-intro="running"]) .stop {
+  visibility: hidden;
 }
 
 .caption {
@@ -203,6 +205,7 @@
 }
 .sectionLabel {
   margin: 0 0 clamp(48px, 7vw, 96px);
+  font-weight: 400;
   font-size: 0.8125rem;
   letter-spacing: 0.24em;
   text-transform: uppercase;
@@ -324,10 +327,10 @@
   margin: 6px 0 0;
 }
 .footer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 16px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: baseline;
+  gap: 16px 48px;
   margin-top: clamp(120px, 16vw, 220px);
   padding: 32px var(--gutter) 40px;
   border-top: 1px solid var(--line);
@@ -335,7 +338,20 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
-.footer ul {
+.footerNav {
+  display: flex;
+  gap: 28px;
+}
+.footerNav a {
+  color: inherit;
+  text-decoration: none;
+}
+.footerContact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+}
+.footerContact ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -343,8 +359,84 @@
   flex-wrap: wrap;
   gap: 8px 28px;
 }
+.footerName {
+  color: var(--ink-2);
+}
 .pending {
   color: var(--ink-2);
+}
+
+/* ----- Entrance ----- */
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  animation: intro-gone 0s linear 2.2s forwards;
+}
+.intro[data-state="done"] {
+  display: none;
+}
+@keyframes intro-gone {
+  to {
+    visibility: hidden;
+  }
+}
+.curtain {
+  position: absolute;
+  inset: 0;
+  background: #555753;
+  animation: curtain-up 900ms cubic-bezier(0.7, 0, 0.2, 1) 1.15s forwards;
+}
+@keyframes curtain-up {
+  to {
+    transform: translateY(-100%);
+  }
+}
+.introMark {
+  position: absolute;
+  inset-inline-end: var(--gutter);
+  bottom: 28px;
+  color: #f1f2ed;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+.ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 64px;
+  height: 64px;
+  margin: -32px 0 0 -32px;
+  overflow: visible;
+  transition: transform 900ms cubic-bezier(0.7, 0, 0.2, 1);
+}
+.ring circle {
+  fill: transparent;
+  stroke: #f1f2ed;
+  stroke-width: 2;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: ring-draw 950ms ease-in-out 100ms forwards;
+  transition:
+    fill 400ms ease 450ms,
+    stroke 400ms ease 350ms;
+}
+.intro[data-state="revealing"] .ring circle {
+  fill: var(--ink);
+  stroke: var(--ink);
+}
+@keyframes ring-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .intro {
+    display: none;
+  }
 }
 
 /* Scroll-linked motion, only where supported and wanted */
@@ -386,22 +478,18 @@
 /* ----- Phone ----- */
 @media (max-width: 760px) {
   .header {
-    grid-template-columns: 1fr auto;
     height: 64px;
-  }
-  .nav {
-    gap: 16px;
-  }
-  .navEnd {
-    display: none;
   }
   .brand {
     letter-spacing: 0.2em;
     font-size: 0.8125rem;
   }
-  .nav a {
+  .role {
     font-size: 0.6875rem;
     letter-spacing: 0.1em;
+  }
+  .footer {
+    grid-template-columns: 1fr;
   }
   .frame {
     height: calc(100svh - 64px - var(--gutter));

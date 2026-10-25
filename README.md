@@ -2,7 +2,7 @@
 
 Product design portfolio built with Next.js (App Router), TypeScript and CSS Modules.
 
-Status: **choosing a direction.** The main pages are an unstyled content skeleton; three homepage options live at `/en/options` (A, B, C). Copy marked "Draft copy" and "Placeholder" images are not final.
+Status: **homepage direction chosen** (after Moheim). The homepage at `/en` is designed; project pages are still an unstyled skeleton. Copy marked "Draft copy" and "Placeholder" images are not final.
 
 ## Run it locally
 
@@ -28,7 +28,9 @@ npm start          # serve the production build
 | English copy (homepage, nav, contact) | `src/content/dictionaries/en.ts` |
 | Projects (titles, summaries, tags, cover images) | `src/content/projects.ts` |
 | Images | `src/assets/images/` (imported, so Next sizes and optimizes them) |
-| Base styles (reset only for now) | `src/styles/globals.css` |
+| Base styles (reset) | `src/styles/globals.css` |
+| Homepage components and styles (intro, slideshow) | `src/components/home/` |
+| Font (Jost) | `src/styles/fonts.ts` |
 | Languages and text direction | `src/i18n/config.ts` |
 | Pages | `src/app/[lang]/` |
 | Decisions, open questions, missing info | `docs/PROJECT_LOG.md` |
