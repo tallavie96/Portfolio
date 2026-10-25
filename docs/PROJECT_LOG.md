@@ -16,6 +16,13 @@ Homepage now:
 
 Reference notes: Moheim uses TT Commons, a wide-tracked caps nav, a framed hero slider with a thumbnail caption, a custom smooth scroll, and a grey loader whose ring becomes the O of the logo as the curtain lifts.
 
+**Real screens on the homepage (2026-10-25):**
+- Slides: MuniBox and kea show three phones centred on the light tint, Hertz shows the portal dashboard in a minimal browser frame; screens sit 64px below the name. Caption is only `01 / 03`, project name and arrow (thumbnail and kind removed). Project rows below use the same images
+- MuniBox: `munibox-share/home/manage.webp` (Tal's screens, Hebrew)
+- kea: `kea-products-v2`, `kea-routine-v2` (Tal's updated screens); onboarding is still a cut-out from `kea.png` (`kea-onboarding-cut.webp`) because the new onboarding file Tal sent in chat wasn't saved to disk. Replace when re-sent
+- Hertz: `hertz-dashboard/orders/stats.webp`, captured from Tal's interactive prototype (`Hertz_Agency_Portal_.html`, mock data). Later: video or clickable prototype inside the case study
+- Boost wall graphics (`boost-wall-1/2.webp`, from the PDF) added to the AI playground gallery for its project page
+
 Assets: `kea-onboarding.webp`, `kea-products.webp`, `kea-routine.webp` (crops of the three phone screens in `kea.png`), listed in the AI playground's `gallery`. Next: MuniBox and Hertz screens; project pages (still unstyled).
 
 Stage 1 approved 2026-10-25.

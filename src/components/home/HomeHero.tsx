@@ -4,14 +4,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState, type CSSProperties } from "react";
 import type { HomeProject } from "./data";
+import { PhoneTrio } from "./PhoneTrio";
 import styles from "./Home.module.css";
 
 const tints = ["#e9eef2", "#f2eee0", "#f3e9ec"];
 
 /**
  * Homepage opening (after Moheim): a large framed slide per project with the name
- * set thin and wide across it, and a small caption (counter, thumbnail, kind,
- * title) that opens the project. Advances on its own; can be paused.
+ * set thin and wide across it, and a small caption (counter, title, arrow) that
+ * opens the project. Advances on its own; can be paused.
  */
 export function HomeHero({
   name,
@@ -56,7 +57,28 @@ export function HomeHero({
               aria-hidden={i !== current}
               style={{ "--tint": tints[i % tints.length] } as CSSProperties}
             >
-              {img ? (
+              {p.phones.length > 0 ? (
+                <div className={styles.slidePhones}>
+                  <PhoneTrio phones={p.phones} sizes="(max-width: 760px) 30vw, 20vw" priority={i === 0} />
+                </div>
+              ) : p.desktop ? (
+                <div className={styles.slideDesktop}>
+                  <div className={styles.browser}>
+                    <span className={styles.browserBar} aria-hidden="true">
+                      <i />
+                      <i />
+                      <i />
+                    </span>
+                    <Image
+                      src={p.desktop.src}
+                      alt={p.desktop.alt}
+                      sizes="(max-width: 760px) 90vw, 56vw"
+                      priority={i === 0}
+                      className={styles.browserShot}
+                    />
+                  </div>
+                </div>
+              ) : img ? (
                 <Image
                   src={img.src}
                   alt={img.alt}
@@ -82,7 +104,6 @@ export function HomeHero({
 
         <div className={styles.caption}>
           {projects.map((p, i) => {
-            const img = image(p);
             return (
               <div
                 key={p.slug}
@@ -97,11 +118,7 @@ export function HomeHero({
                   </bdi>
                 </span>
                 <Link href={p.href} className={styles.captionLink}>
-                  <span className={styles.thumb}>
-                    {img ? <Image src={img.src} alt="" fill sizes="96px" /> : <span className={styles.thumbPending} />}
-                  </span>
                   <span className={styles.captionText}>
-                    <span className={styles.kind}>{p.kind}</span>
                     <span className={styles.captionTitle}>
                       {p.title}
                       <svg className={styles.arrow} viewBox="0 0 16 16" aria-hidden="true">

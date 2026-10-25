@@ -7,6 +7,7 @@ import { getDictionary } from "@/i18n/dictionaries";
 import { getHomeProjects } from "@/components/home/data";
 import { HomeHero } from "@/components/home/HomeHero";
 import { Intro } from "@/components/home/Intro";
+import { PhoneTrio } from "@/components/home/PhoneTrio";
 import { sans } from "@/styles/fonts";
 import styles from "@/components/home/Home.module.css";
 
@@ -62,7 +63,11 @@ export default async function HomePage({ params }: PageProps<"/[lang]">) {
                     tabIndex={-1}
                     aria-hidden="true"
                   >
-                    {img ? (
+                    {p.phones.length > 0 ? (
+                      <span className={styles.platePhones}>
+                        <PhoneTrio phones={p.phones} sizes="(max-width: 760px) 30vw, 18vw" />
+                      </span>
+                    ) : img ? (
                       <Image src={img.src} alt="" fill sizes="(max-width: 760px) 100vw, 60vw" />
                     ) : (
                       <span className={styles.platePending}>

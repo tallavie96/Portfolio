@@ -18,6 +18,8 @@ export interface HomeProject {
   href: string;
   cover: HomeImage | null;
   gallery: HomeImage[];
+  phones: HomeImage[];
+  desktop: HomeImage | null;
 }
 
 export function getHomeProjects(lang: Locale): HomeProject[] {
@@ -31,5 +33,7 @@ export function getHomeProjects(lang: Locale): HomeProject[] {
     href: `/${lang}/work/${p.slug}`,
     cover: p.cover ? { src: p.cover, alt: p.coverAlt ?? "" } : null,
     gallery: p.gallery,
+    phones: p.phones,
+    desktop: p.desktop,
   }));
 }
